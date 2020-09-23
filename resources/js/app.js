@@ -20,13 +20,15 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 import Vue from 'vue';
-import Vuetify from 'vuetify'; //★
-import 'vuetify/dist/vuetify.min.css'; //★
-import '@mdi/font/css/materialdesignicons.css'; //★
+// ルーティングの定義をインポートする
+import router from './router'
+// ルートコンポーネントをインポートする
+import App from './App.vue'
+import Vuetify from 'vuetify';
+import 'vuetify/dist/vuetify.min.css';
+import '@mdi/font/css/materialdesignicons.css';
 
-Vue.use(Vuetify); //★
-
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.use(Vuetify);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -42,5 +44,8 @@ export default new Vuetify({
 
 const app = new Vue({
     el: '#app',
-    vuetify: new Vuetify(), //★
+    router, // ルーティングの定義を読み込む
+    components: { App }, // ルートコンポーネントの使用を宣言する
+    template: '<App />', // ルートコンポーネントを描画する
+    vuetify: new Vuetify(),
 });
