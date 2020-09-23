@@ -8,9 +8,6 @@
 </head>
 <body>
 <div id="app">
-{{--    <v-app>--}}
-{{--        <example-component></example-component>--}}
-{{--    </v-app>--}}
 </div>
 </body>
 </html>

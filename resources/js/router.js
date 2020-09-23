@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 
 // ページコンポーネントをインポートする
 import RowTable from './pages/RowTable'
+import Login from './pages/Login'
 
 // VueRouterプラグインを使用する
 // これによって<RouterView />コンポーネントなどを使うことができる
