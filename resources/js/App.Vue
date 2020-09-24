@@ -1,9 +1,34 @@
 <template>
-    <div>
+    <v-app id="inspire">
+        <Navbar/>
         <main>
-            <div class="container">
-                <RouterView />
-            </div>
+            <v-main>
+                <v-container>
+                    <RouterView/>
+<!--                    <router-view></router-view>-->
+                </v-container>
+                <!--                <div class="container">-->
+                <!--                    <RouterView/>-->
+                <!--                </div>-->
+            </v-main>
         </main>
-    </div>
+        <Footer/>
+    </v-app>
 </template>
+
+<script>
+    import Navbar from './components/Navbar.vue'
+    import Footer from './components/Footer.vue'
+    export default {
+        props: {
+            source: String,
+        },
+        data: () => ({
+            drawer: null,
+        }),
+        components: {
+            Navbar,
+            Footer,
+        }
+    }
+</script>

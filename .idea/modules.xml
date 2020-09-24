@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/rowApp.iml" filepath="$PROJECT_DIR$/.idea/rowApp.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../vuetifyTest/.idea/vuetifyTest.iml" filepath="$PROJECT_DIR$/../vuetifyTest/.idea/vuetifyTest.iml" />
+      <module fileurl="file://$USER_HOME$/Downloads/sass/.idea/sass.iml" filepath="$USER_HOME$/Downloads/sass/.idea/sass.iml" />
     </modules>
   </component>
 </project>
