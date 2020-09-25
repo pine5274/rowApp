@@ -5,11 +5,7 @@
             <v-main>
                 <v-container>
                     <RouterView/>
-<!--                    <router-view></router-view>-->
                 </v-container>
-                <!--                <div class="container">-->
-                <!--                    <RouterView/>-->
-                <!--                </div>-->
             </v-main>
         </main>
         <Footer/>

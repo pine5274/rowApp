@@ -2009,10 +2009,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2127,13 +2123,128 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      tab: null,
-      items: ['Login', 'Register'],
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+      valid: true,
+      loginForm: {
+        email: '',
+        password: ''
+      },
+      registerForm: {
+        name: '',
+        email: '',
+        password: '',
+        password_confirmation: ''
+      },
+      nameRules: [function (v) {
+        return !!v || 'Name is required';
+      }, function (v) {
+        return v && v.length <= 10 || 'Name must be less than 10 characters';
+      }],
+      emailRules: [function (v) {
+        return !!v || 'E-mail is required';
+      }, function (v) {
+        return /.+@.+\..+/.test(v) || 'E-mail must be valid';
+      }],
+      passwordRules: [function (v) {
+        return !!v || 'Password is required';
+      }, function (v) {
+        return v && v.length <= 16 || 'Password must be less than 16 characters';
+      }],
+      tab: null
     };
+  },
+  methods: {
+    login: function login() {
+      console.log(this.loginForm);
+    },
+    register: function register() {
+      console.log(this.registerForm);
+    } // validate () {
+    //     this.$refs.form.validate()
+    // },
+    // reset () {
+    //     this.$refs.form.reset()
+    // },
+    // resetValidation () {
+    //     this.$refs.form.resetValidation()
+    // },
+
   }
 });
 
@@ -38742,7 +38853,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "v-card",
-    { attrs: { color: "basil" } },
+    { attrs: { "max-width": "600" } },
     [
       _c(
         "v-tabs",
@@ -38756,9 +38867,9 @@ var render = function() {
           }
         },
         [
-          _c("v-tab", [_vm._v("Item One")]),
+          _c("v-tab", [_vm._v("Login")]),
           _vm._v(" "),
-          _c("v-tab", [_vm._v("Item Two")])
+          _c("v-tab", [_vm._v("Regster")])
         ],
         1
       ),
@@ -38781,7 +38892,74 @@ var render = function() {
               _c(
                 "v-card",
                 { attrs: { flat: "" } },
-                [_c("v-card-text", [_vm._v("1")])],
+                [
+                  _c(
+                    "v-card-actions",
+                    [
+                      _c(
+                        "v-form",
+                        {
+                          ref: "form",
+                          attrs: { "lazy-validation": "" },
+                          model: {
+                            value: _vm.valid,
+                            callback: function($$v) {
+                              _vm.valid = $$v
+                            },
+                            expression: "valid"
+                          }
+                        },
+                        [
+                          _c("v-text-field", {
+                            attrs: {
+                              rules: _vm.emailRules,
+                              label: "E-mail",
+                              required: ""
+                            },
+                            model: {
+                              value: _vm.loginForm.email,
+                              callback: function($$v) {
+                                _vm.$set(_vm.loginForm, "email", $$v)
+                              },
+                              expression: "loginForm.email"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("v-text-field", {
+                            attrs: {
+                              rules: _vm.passwordRules,
+                              label: "Password",
+                              required: ""
+                            },
+                            model: {
+                              value: _vm.loginForm.password,
+                              callback: function($$v) {
+                                _vm.$set(_vm.loginForm, "password", $$v)
+                              },
+                              expression: "loginForm.password"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "v-btn",
+                            {
+                              staticClass: "mr-4",
+                              attrs: { disabled: _vm.valid, color: "success" },
+                              on: { click: _vm.login }
+                            },
+                            [
+                              _vm._v(
+                                "\n                            Submit\n                        "
+                              )
+                            ]
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
                 1
               )
             ],
@@ -38794,7 +38972,109 @@ var render = function() {
               _c(
                 "v-card",
                 { attrs: { flat: "" } },
-                [_c("v-card-text", [_vm._v("2")])],
+                [
+                  _c(
+                    "v-card-actions",
+                    [
+                      _c(
+                        "v-form",
+                        {
+                          ref: "form",
+                          attrs: { "lazy-validation": "" },
+                          model: {
+                            value: _vm.valid,
+                            callback: function($$v) {
+                              _vm.valid = $$v
+                            },
+                            expression: "valid"
+                          }
+                        },
+                        [
+                          _c("v-text-field", {
+                            attrs: {
+                              counter: 10,
+                              rules: _vm.nameRules,
+                              label: "Name",
+                              required: ""
+                            },
+                            model: {
+                              value: _vm.registerForm.name,
+                              callback: function($$v) {
+                                _vm.$set(_vm.registerForm, "name", $$v)
+                              },
+                              expression: "registerForm.name"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("v-text-field", {
+                            attrs: {
+                              rules: _vm.emailRules,
+                              label: "E-mail",
+                              required: ""
+                            },
+                            model: {
+                              value: _vm.registerForm.email,
+                              callback: function($$v) {
+                                _vm.$set(_vm.registerForm, "email", $$v)
+                              },
+                              expression: "registerForm.email"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("v-text-field", {
+                            attrs: {
+                              rules: _vm.passwordRules,
+                              label: "password",
+                              required: ""
+                            },
+                            model: {
+                              value: _vm.registerForm.password,
+                              callback: function($$v) {
+                                _vm.$set(_vm.registerForm, "password", $$v)
+                              },
+                              expression: "registerForm.password"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("v-text-field", {
+                            attrs: {
+                              rules: _vm.passwordRules,
+                              label: "password_confirmation",
+                              required: ""
+                            },
+                            model: {
+                              value: _vm.registerForm.password_confirmation,
+                              callback: function($$v) {
+                                _vm.$set(
+                                  _vm.registerForm,
+                                  "password_confirmation",
+                                  $$v
+                                )
+                              },
+                              expression: "registerForm.password_confirmation"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "v-btn",
+                            {
+                              staticClass: "mr-4",
+                              attrs: { color: "success" },
+                              on: { click: _vm.register }
+                            },
+                            [
+                              _vm._v(
+                                "\n                            Submit\n                        "
+                              )
+                            ]
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
                 1
               )
             ],
