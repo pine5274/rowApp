@@ -48,6 +48,7 @@
                             ref="form"
                             v-model="valid"
                             lazy-validation
+                            @submit.prevent="register"
                         >
                             <v-text-field
                                 v-model="registerForm.name"
@@ -127,8 +128,12 @@
             login () {
                 console.log(this.loginForm)
             },
-            register () {
-                console.log(this.registerForm)
+            async register () {
+                // authストアのresigterアクションを呼び出す
+                await this.$store.dispatch('auth/register', this.registerForm)
+
+                // トップページに移動する
+                this.$router.push('/')
             },
             // validate () {
             //     this.$refs.form.validate()
