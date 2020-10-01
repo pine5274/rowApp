@@ -31,16 +31,18 @@
         >
             <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
             <v-toolbar-title>
-                <!--                <RouterLink class="navbar__brand" to="/">-->
                 <span class="hidden-sm-and-down">Application</span>
             </v-toolbar-title>
             <v-spacer></v-spacer>
             <router-link to="/">
                 <v-btn text >Home</v-btn>
             </router-link>
-            <router-link to="/login">
-                <v-btn text to="/login">Login / Register</v-btn>
-            </router-link>
+            <div v-if="isNotLogin">
+                <router-link to="/login">
+                    <v-btn text to="/login">Login / Register</v-btn>
+                </router-link>
+            </div>
+            <span v-else>{{ username }}</span>
         </v-app-bar>
     </div>
 </template>
@@ -49,6 +51,14 @@
         data: () => ({
             drawer: null,
         }),
+        computed: {
+            isNotLogin () {
+                return !this.$store.getters['auth/check']
+            },
+            username () {
+                return this.$store.getters['auth/username']
+            }
+        }
     }
 </script>
 <style scoped>

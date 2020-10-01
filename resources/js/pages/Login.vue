@@ -14,6 +14,7 @@
                             ref="form"
                             v-model="valid"
                             lazy-validation
+                            @submit.prevent="login"
                         >
                             <v-text-field
                                 v-model="loginForm.email"
@@ -30,7 +31,6 @@
                             ></v-text-field>
 
                             <v-btn
-                                :disabled="valid"
                                 color="success"
                                 class="mr-4"
                                 @click="login"
@@ -125,12 +125,16 @@
             }
         },
         methods: {
-            login () {
-                console.log(this.loginForm)
-            },
             async register () {
                 // authストアのresigterアクションを呼び出す
                 await this.$store.dispatch('auth/register', this.registerForm)
+
+                // トップページに移動する
+                this.$router.push('/')
+            },
+            async login () {
+                // authストアのloginアクションを呼び出す
+                await this.$store.dispatch('auth/login', this.loginForm)
 
                 // トップページに移動する
                 this.$router.push('/')
