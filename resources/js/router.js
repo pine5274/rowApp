@@ -6,6 +6,8 @@ import RowTable from './pages/RowTable'
 import Login from './pages/Login'
 
 import store from './store'
+import SystemError from './pages/errors/System.vue'
+
 
 // VueRouterプラグインを使用する
 // これによって<RouterView />コンポーネントなどを使うことができる
@@ -27,6 +29,10 @@ const routes = [
                 next()
             }
         }
+    },
+    {
+        path: '/500',
+        component: SystemError
     },
 ]
 

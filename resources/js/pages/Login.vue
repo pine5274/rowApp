@@ -16,6 +16,17 @@
                             lazy-validation
                             @submit.prevent="login"
                         >
+                            <v-alert
+                                text
+                                type="error"
+                                v-if="loginErrors">
+                                    <ul v-if="loginErrors.email">
+                                        <li v-for="msg in loginErrors.email" :key="msg">{{ msg }}</li>
+                                    </ul>
+                                    <ul v-if="loginErrors.password">
+                                        <li v-for="msg in loginErrors.password" :key="msg">{{ msg }}</li>
+                                    </ul>
+                            </v-alert>
                             <v-text-field
                                 v-model="loginForm.email"
                                 :rules="emailRules"
@@ -50,6 +61,20 @@
                             lazy-validation
                             @submit.prevent="register"
                         >
+                            <v-alert
+                                text
+                                type="error"
+                                v-if="registerErrors">
+                                <ul v-if="registerErrors.name">
+                                    <li v-for="msg in registerErrors.name" :key="msg">{{ msg }}</li>
+                                </ul>
+                                <ul v-if="registerErrors.email">
+                                    <li v-for="msg in registerErrors.email" :key="msg">{{ msg }}</li>
+                                </ul>
+                                <ul v-if="registerErrors.password">
+                                    <li v-for="msg in registerErrors.password" :key="msg">{{ msg }}</li>
+                                </ul>
+                            </v-alert>
                             <v-text-field
                                 v-model="registerForm.name"
                                 :counter="10"
@@ -129,16 +154,24 @@
                 // authストアのresigterアクションを呼び出す
                 await this.$store.dispatch('auth/register', this.registerForm)
 
-                // トップページに移動する
-                this.$router.push('/')
+                if (this.apiStatus) {
+                    // トップページに移動する
+                    this.$router.push('/')
+                }
             },
             async login () {
                 // authストアのloginアクションを呼び出す
                 await this.$store.dispatch('auth/login', this.loginForm)
 
-                // トップページに移動する
-                this.$router.push('/')
+                if (this.apiStatus) {
+                    // トップページに移動する
+                    this.$router.push('/')
+                }
             },
+            clearError () {
+                this.$store.commit('auth/setLoginErrorMessages', null)
+                this.$store.commit('auth/setRegisterErrorMessages', null)
+            }
             // validate () {
             //     this.$refs.form.validate()
             // },
@@ -148,6 +181,20 @@
             // resetValidation () {
             //     this.$refs.form.resetValidation()
             // },
+        },
+        created () {
+            this.clearError()
+        },
+        computed: {
+            apiStatus () {
+                return this.$store.state.auth.apiStatus
+            },
+            loginErrors () {
+                return this.$store.state.auth.loginErrorMessages
+            },
+            registerErrors () {
+                return this.$store.state.auth.registerErrorMessages
+            }
         },
     }
 </script>
