@@ -1,76 +1,63 @@
 <template>
-    <h1>Table</h1>
+    <v-card>
+        <v-card-actions>
+            <v-form
+                ref="form"
+                v-model="valid"
+                lazy-validation
+                @submit.prevent="submit"
+            >
+<!--                <v-alert-->
+<!--                    text-->
+<!--                    type="error"-->
+<!--                    v-if="loginErrors">-->
+<!--                    <ul v-if="loginErrors.email">-->
+<!--                        <li v-for="msg in loginErrors.email" :key="msg">{{ msg }}</li>-->
+<!--                    </ul>-->
+<!--                    <ul v-if="loginErrors.password">-->
+<!--                        <li v-for="msg in loginErrors.password" :key="msg">{{ msg }}</li>-->
+<!--                    </ul>-->
+<!--                </v-alert>-->
+                <v-text-field
+                    v-model="rowForm.boatName"
+                    :rules="boatNameRules"
+                    label="boatName"
+                    required
+                ></v-text-field>
 
-<!--    <v-app id="inspire">-->
-<!--        <v-navigation-drawer-->
-<!--            v-model="drawer"-->
-<!--            app-->
-<!--        >-->
-<!--            <v-list dense>-->
-<!--                <v-list-item link>-->
-<!--                    <v-list-item-action>-->
-<!--                        <v-icon>mdi-home</v-icon>-->
-<!--                    </v-list-item-action>-->
-<!--                    <v-list-item-content>-->
-<!--                        <v-list-item-title>Home</v-list-item-title>-->
-<!--                    </v-list-item-content>-->
-<!--                </v-list-item>-->
-<!--                <v-list-item link>-->
-<!--                    <v-list-item-action>-->
-<!--                        <v-icon>mdi-email</v-icon>-->
-<!--                    </v-list-item-action>-->
-<!--                    <v-list-item-content>-->
-<!--                        <v-list-item-title>Contact</v-list-item-title>-->
-<!--                    </v-list-item-content>-->
-<!--                </v-list-item>-->
-<!--            </v-list>-->
-<!--        </v-navigation-drawer>-->
-
-<!--        <v-app-bar-->
-<!--            app-->
-<!--            color="indigo"-->
-<!--            dense-->
-<!--            dark-->
-<!--        >-->
-<!--            <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>-->
-<!--            <v-toolbar-title>Application</v-toolbar-title>-->
-<!--        </v-app-bar>-->
-
-<!--        <v-main>-->
-<!--            <v-container-->
-<!--                class="fill-height"-->
-<!--                fluid-->
-<!--            >-->
-<!--                <v-row-->
-<!--                    align="center"-->
-<!--                    justify="center"-->
-<!--                >-->
-<!--                    <v-col class="text-center">-->
-<!--                        <v-tooltip left>-->
-<!--                            <template v-slot:activator="{ on }">-->
-<!--                                <v-btn-->
-<!--                                    :href="source"-->
-<!--                                    icon-->
-<!--                                    large-->
-<!--                                    target="_blank"-->
-<!--                                    v-on="on"-->
-<!--                                >-->
-<!--                                    <v-icon large>mdi-code-tags</v-icon>-->
-<!--                                </v-btn>-->
-<!--                            </template>-->
-<!--                            <span>Source</span>-->
-<!--                        </v-tooltip>-->
-<!--                    </v-col>-->
-<!--                </v-row>-->
-<!--            </v-container>-->
-<!--        </v-main>-->
-<!--        <v-footer-->
-<!--            color="indigo"-->
-<!--            app-->
-<!--        >-->
-<!--            <span class="white&#45;&#45;text">&copy; {{ new Date().getFullYear() }}</span>-->
-<!--        </v-footer>-->
-<!--    </v-app>-->
+                <v-menu
+                    v-model="menu"
+                    :close-on-content-click="false"
+                    :nudge-right="40"
+                    transition="scale-transition"
+                    offset-y
+                    min-width="290px"
+                >
+                    <template v-slot:activator="{ on, attrs }">
+                        <v-text-field
+                            v-model="rowForm.date"
+                            label="Picker without buttons"
+                            prepend-icon="mdi-calendar"
+                            readonly
+                            v-bind="attrs"
+                            v-on="on"
+                        ></v-text-field>
+                    </template>
+                    <v-date-picker
+                        v-model="rowForm.date"
+                        @input="menu = false"
+                    ></v-date-picker>
+                </v-menu>
+                <v-btn
+                    color="success"
+                    class="mr-4"
+                    @click="login"
+                >
+                    Submit
+                </v-btn>
+            </v-form>
+        </v-card-actions>
+    </v-card>
 </template>
 
 <script>
@@ -79,7 +66,22 @@
             source: String,
         },
         data: () => ({
-            drawer: null,
+            valid: true,
+            rowForm: {
+                boatName: '',
+                date: new Date().toISOString().substr(0, 10),
+            },
+            boatNameRules: [
+                v => !!v || 'Name is required',
+                v => (v && v.length <= 10) || 'Name must be less than 10 characters',
+            ],
+            date: new Date().toISOString().substr(0, 10),
+            menu: false,
         }),
+        methods: {
+            login () {
+                console.log(this.rowForm)
+            },
+        }
     }
 </script>

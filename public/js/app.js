@@ -2536,27 +2536,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     source: String
   },
   data: function data() {
     return {
-      drawer: null
+      valid: true,
+      rowForm: {
+        boatName: '',
+        date: new Date().toISOString().substr(0, 10)
+      },
+      boatNameRules: [function (v) {
+        return !!v || 'Name is required';
+      }, function (v) {
+        return v && v.length <= 10 || 'Name must be less than 10 characters';
+      }],
+      date: new Date().toISOString().substr(0, 10),
+      menu: false
     };
+  },
+  methods: {
+    login: function login() {
+      console.log(this.rowForm);
+    }
   }
 });
 
@@ -4758,7 +4761,7 @@ var render = function() {
         [
           _c("v-tab", [_vm._v("Login")]),
           _vm._v(" "),
-          _c("v-tab", [_vm._v("Regster")])
+          _c("v-tab", [_vm._v("Register")])
         ],
         1
       ),
@@ -5100,7 +5103,139 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("h1", [_vm._v("Table")])
+  return _c(
+    "v-card",
+    [
+      _c(
+        "v-card-actions",
+        [
+          _c(
+            "v-form",
+            {
+              ref: "form",
+              attrs: { "lazy-validation": "" },
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.submit($event)
+                }
+              },
+              model: {
+                value: _vm.valid,
+                callback: function($$v) {
+                  _vm.valid = $$v
+                },
+                expression: "valid"
+              }
+            },
+            [
+              _c("v-text-field", {
+                attrs: {
+                  rules: _vm.boatNameRules,
+                  label: "boatName",
+                  required: ""
+                },
+                model: {
+                  value: _vm.rowForm.boatName,
+                  callback: function($$v) {
+                    _vm.$set(_vm.rowForm, "boatName", $$v)
+                  },
+                  expression: "rowForm.boatName"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "v-menu",
+                {
+                  attrs: {
+                    "close-on-content-click": false,
+                    "nudge-right": 40,
+                    transition: "scale-transition",
+                    "offset-y": "",
+                    "min-width": "290px"
+                  },
+                  scopedSlots: _vm._u([
+                    {
+                      key: "activator",
+                      fn: function(ref) {
+                        var on = ref.on
+                        var attrs = ref.attrs
+                        return [
+                          _c(
+                            "v-text-field",
+                            _vm._g(
+                              _vm._b(
+                                {
+                                  attrs: {
+                                    label: "Picker without buttons",
+                                    "prepend-icon": "mdi-calendar",
+                                    readonly: ""
+                                  },
+                                  model: {
+                                    value: _vm.rowForm.date,
+                                    callback: function($$v) {
+                                      _vm.$set(_vm.rowForm, "date", $$v)
+                                    },
+                                    expression: "rowForm.date"
+                                  }
+                                },
+                                "v-text-field",
+                                attrs,
+                                false
+                              ),
+                              on
+                            )
+                          )
+                        ]
+                      }
+                    }
+                  ]),
+                  model: {
+                    value: _vm.menu,
+                    callback: function($$v) {
+                      _vm.menu = $$v
+                    },
+                    expression: "menu"
+                  }
+                },
+                [
+                  _vm._v(" "),
+                  _c("v-date-picker", {
+                    on: {
+                      input: function($event) {
+                        _vm.menu = false
+                      }
+                    },
+                    model: {
+                      value: _vm.rowForm.date,
+                      callback: function($$v) {
+                        _vm.$set(_vm.rowForm, "date", $$v)
+                      },
+                      expression: "rowForm.date"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-btn",
+                {
+                  staticClass: "mr-4",
+                  attrs: { color: "success" },
+                  on: { click: _vm.login }
+                },
+                [_vm._v("\n                    Submit\n                ")]
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

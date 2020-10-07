@@ -4,7 +4,7 @@
     >
         <v-tabs v-model="tab">
             <v-tab>Login</v-tab>
-            <v-tab>Regster</v-tab>
+            <v-tab>Register</v-tab>
         </v-tabs>
         <v-tabs-items v-model="tab">
             <v-tab-item>
