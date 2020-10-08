@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../photoApp2/.idea/photoApp2.iml" filepath="$PROJECT_DIR$/../photoApp2/.idea/photoApp2.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/rowApp.iml" filepath="$PROJECT_DIR$/.idea/rowApp.iml" />
-      <module fileurl="file://$USER_HOME$/Downloads/sass/.idea/sass.iml" filepath="$USER_HOME$/Downloads/sass/.idea/sass.iml" />
     </modules>
   </component>
 </project>

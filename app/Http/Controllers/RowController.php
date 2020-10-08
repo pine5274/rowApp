@@ -19,11 +19,19 @@ class RowController extends Controller
     public function index()
     {
         return Row::all();
+
     }
 
     public function store(StoreRow $request)
     {
-        Row::create($request->all());
+        $row = new Row();
+        $row->boat_name = $request->get('boat_name');
+        $row->date_time = $request->get('date_time');
+        $row->user_id = Auth::user()->id;
+
+        $row->save();
+
+
     }
 
 

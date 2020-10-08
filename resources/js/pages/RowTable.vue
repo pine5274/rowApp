@@ -7,17 +7,6 @@
                 lazy-validation
                 @submit.prevent="submit"
             >
-<!--                <v-alert-->
-<!--                    text-->
-<!--                    type="error"-->
-<!--                    v-if="loginErrors">-->
-<!--                    <ul v-if="loginErrors.email">-->
-<!--                        <li v-for="msg in loginErrors.email" :key="msg">{{ msg }}</li>-->
-<!--                    </ul>-->
-<!--                    <ul v-if="loginErrors.password">-->
-<!--                        <li v-for="msg in loginErrors.password" :key="msg">{{ msg }}</li>-->
-<!--                    </ul>-->
-<!--                </v-alert>-->
                 <v-text-field
                     v-model="rowForm.boatName"
                     :rules="boatNameRules"
@@ -51,7 +40,7 @@
                 <v-btn
                     color="success"
                     class="mr-4"
-                    @click="login"
+                    @click="addRow"
                 >
                     Submit
                 </v-btn>
@@ -82,6 +71,12 @@
             login () {
                 console.log(this.rowForm)
             },
+            async addRow () {
+                const response = await axios.post('/api/rows', {
+                    boat_name: this.rowForm.boatName,
+                    date_time: this.rowForm.date,
+                })
+            }
         }
     }
 </script>

@@ -37,6 +37,7 @@
             <router-link to="/">
                 <v-btn text >Home</v-btn>
             </router-link>
+            <RowForm/>
             <div v-if="isNotLogin">
                 <router-link to="/login">
                     <v-btn text to="/login">Login / Register</v-btn>
@@ -47,7 +48,13 @@
     </div>
 </template>
 <script>
+    import RowForm from "./RowForm";
+
     export default {
+        components: {RowForm},
+        comments: {
+            RowForm
+        },
         data: () => ({
             drawer: null,
         }),
