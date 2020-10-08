@@ -2201,9 +2201,6 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     RowForm: _RowForm__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
-  comments: {
-    RowForm: _RowForm__WEBPACK_IMPORTED_MODULE_0__["default"]
-  },
   data: function data() {
     return {
       drawer: null
@@ -2230,6 +2227,75 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2348,8 +2414,52 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      dialog: false
+      dialog: false,
+      valid: true,
+      rowForm: {
+        date: new Date().toISOString().substr(0, 10),
+        boatName: ''
+      },
+      boatNameRules: [function (v) {
+        return !!v || 'Name is required';
+      }, function (v) {
+        return v && v.length <= 10 || 'Name must be less than 10 characters';
+      }],
+      date: new Date().toISOString().substr(0, 10),
+      menu: false
     };
+  },
+  methods: {
+    login: function login() {
+      console.log(this.rowForm);
+    },
+    addRow: function addRow() {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return axios.post('/api/rows', {
+                  boat_name: _this.rowForm.boatName,
+                  date_time: _this.rowForm.date
+                });
+
+              case 2:
+                response = _context.sent;
+                _this.dialog = false;
+
+              case 4:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    }
   }
 });
 
@@ -2612,18 +2722,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /*!**************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/RowTable.vue?vue&type=script&lang=js& ***!
   \**************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+/*! no static exports found */
+/***/ (function(module, exports) {
 
 //
 //
@@ -2649,85 +2749,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ __webpack_exports__["default"] = ({
-  props: {
-    source: String
-  },
-  data: function data() {
-    return {
-      valid: true,
-      rowForm: {
-        boatName: '',
-        date: new Date().toISOString().substr(0, 10)
-      },
-      boatNameRules: [function (v) {
-        return !!v || 'Name is required';
-      }, function (v) {
-        return v && v.length <= 10 || 'Name must be less than 10 characters';
-      }],
-      date: new Date().toISOString().substr(0, 10),
-      menu: false
-    };
-  },
-  methods: {
-    login: function login() {
-      console.log(this.rowForm);
-    },
-    addRow: function addRow() {
-      var _this = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var response;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.next = 2;
-                return axios.post('/api/rows', {
-                  boat_name: _this.rowForm.boatName,
-                  date_time: _this.rowForm.date
-                });
-
-              case 2:
-                response = _context.sent;
-
-              case 3:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }))();
-    }
-  }
-});
 
 /***/ }),
 
@@ -4918,7 +4939,7 @@ var render = function() {
       _c(
         "v-dialog",
         {
-          attrs: { persistent: "", "max-width": "600px" },
+          attrs: { "max-width": "600px" },
           scopedSlots: _vm._u([
             {
               key: "activator",
@@ -4937,7 +4958,11 @@ var render = function() {
                       ),
                       on
                     ),
-                    [_vm._v("\n                Open Dialog\n            ")]
+                    [
+                      _vm._v(
+                        "\n                    Open Dialog\n                "
+                      )
+                    ]
                   )
                 ]
               }
@@ -4956,171 +4981,163 @@ var render = function() {
           _c(
             "v-card",
             [
-              _c("v-card-title", [
-                _c("span", { staticClass: "headline" }, [
-                  _vm._v("User Profile")
-                ])
-              ]),
-              _vm._v(" "),
               _c(
-                "v-card-text",
+                "v-form",
+                {
+                  ref: "form",
+                  attrs: { "lazy-validation": "" },
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.submit($event)
+                    }
+                  },
+                  model: {
+                    value: _vm.valid,
+                    callback: function($$v) {
+                      _vm.valid = $$v
+                    },
+                    expression: "valid"
+                  }
+                },
                 [
+                  _c("v-card-title", { staticClass: "headline" }, [
+                    _vm._v(
+                      "\n                        出艇表\n                    "
+                    )
+                  ]),
+                  _vm._v(" "),
                   _c(
-                    "v-container",
+                    "v-card-text",
                     [
                       _c(
-                        "v-row",
+                        "v-menu",
+                        {
+                          attrs: {
+                            "close-on-content-click": false,
+                            "nudge-right": 40,
+                            transition: "scale-transition",
+                            "offset-y": "",
+                            "min-width": "290px"
+                          },
+                          scopedSlots: _vm._u([
+                            {
+                              key: "activator",
+                              fn: function(ref) {
+                                var on = ref.on
+                                var attrs = ref.attrs
+                                return [
+                                  _c(
+                                    "v-text-field",
+                                    _vm._g(
+                                      _vm._b(
+                                        {
+                                          attrs: {
+                                            label: "Picker without buttons",
+                                            "prepend-icon": "mdi-calendar",
+                                            readonly: ""
+                                          },
+                                          model: {
+                                            value: _vm.rowForm.date,
+                                            callback: function($$v) {
+                                              _vm.$set(_vm.rowForm, "date", $$v)
+                                            },
+                                            expression: "rowForm.date"
+                                          }
+                                        },
+                                        "v-text-field",
+                                        attrs,
+                                        false
+                                      ),
+                                      on
+                                    )
+                                  )
+                                ]
+                              }
+                            }
+                          ]),
+                          model: {
+                            value: _vm.menu,
+                            callback: function($$v) {
+                              _vm.menu = $$v
+                            },
+                            expression: "menu"
+                          }
+                        },
                         [
-                          _c(
-                            "v-col",
-                            { attrs: { cols: "12", sm: "6", md: "4" } },
-                            [
-                              _c("v-text-field", {
-                                attrs: {
-                                  label: "Legal first name*",
-                                  required: ""
-                                }
-                              })
-                            ],
-                            1
-                          ),
                           _vm._v(" "),
-                          _c(
-                            "v-col",
-                            { attrs: { cols: "12", sm: "6", md: "4" } },
-                            [
-                              _c("v-text-field", {
-                                attrs: {
-                                  label: "Legal middle name",
-                                  hint: "example of helper text only on focus"
-                                }
-                              })
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-col",
-                            { attrs: { cols: "12", sm: "6", md: "4" } },
-                            [
-                              _c("v-text-field", {
-                                attrs: {
-                                  label: "Legal last name*",
-                                  hint: "example of persistent helper text",
-                                  "persistent-hint": "",
-                                  required: ""
-                                }
-                              })
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-col",
-                            { attrs: { cols: "12" } },
-                            [
-                              _c("v-text-field", {
-                                attrs: { label: "Email*", required: "" }
-                              })
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-col",
-                            { attrs: { cols: "12" } },
-                            [
-                              _c("v-text-field", {
-                                attrs: {
-                                  label: "Password*",
-                                  type: "password",
-                                  required: ""
-                                }
-                              })
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-col",
-                            { attrs: { cols: "12", sm: "6" } },
-                            [
-                              _c("v-select", {
-                                attrs: {
-                                  items: ["0-17", "18-29", "30-54", "54+"],
-                                  label: "Age*",
-                                  required: ""
-                                }
-                              })
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-col",
-                            { attrs: { cols: "12", sm: "6" } },
-                            [
-                              _c("v-autocomplete", {
-                                attrs: {
-                                  items: [
-                                    "Skiing",
-                                    "Ice hockey",
-                                    "Soccer",
-                                    "Basketball",
-                                    "Hockey",
-                                    "Reading",
-                                    "Writing",
-                                    "Coding",
-                                    "Basejump"
-                                  ],
-                                  label: "Interests",
-                                  multiple: ""
-                                }
-                              })
-                            ],
-                            1
-                          )
+                          _c("v-date-picker", {
+                            on: {
+                              input: function($event) {
+                                _vm.menu = false
+                              }
+                            },
+                            model: {
+                              value: _vm.rowForm.date,
+                              callback: function($$v) {
+                                _vm.$set(_vm.rowForm, "date", $$v)
+                              },
+                              expression: "rowForm.date"
+                            }
+                          })
                         ],
                         1
-                      )
+                      ),
+                      _vm._v(" "),
+                      _c("v-text-field", {
+                        attrs: {
+                          rules: _vm.boatNameRules,
+                          label: "boatName",
+                          required: ""
+                        },
+                        model: {
+                          value: _vm.rowForm.boatName,
+                          callback: function($$v) {
+                            _vm.$set(_vm.rowForm, "boatName", $$v)
+                          },
+                          expression: "rowForm.boatName"
+                        }
+                      })
                     ],
                     1
                   ),
                   _vm._v(" "),
-                  _c("small", [_vm._v("*indicates required field")])
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-card-actions",
-                [
-                  _c("v-spacer"),
-                  _vm._v(" "),
                   _c(
-                    "v-btn",
-                    {
-                      attrs: { color: "blue darken-1", text: "" },
-                      on: {
-                        click: function($event) {
-                          _vm.dialog = false
-                        }
-                      }
-                    },
-                    [_vm._v("\n                    Close\n                ")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-btn",
-                    {
-                      attrs: { color: "blue darken-1", text: "" },
-                      on: {
-                        click: function($event) {
-                          _vm.dialog = false
-                        }
-                      }
-                    },
-                    [_vm._v("\n                    Save\n                ")]
+                    "v-card-actions",
+                    [
+                      _c("v-spacer"),
+                      _vm._v(" "),
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { color: "grey darken-1", text: "" },
+                          on: {
+                            click: function($event) {
+                              _vm.dialog = false
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            Close\n                        "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { color: "blue", text: "" },
+                          on: { click: _vm.addRow }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            Submit\n                        "
+                          )
+                        ]
+                      )
+                    ],
+                    1
                   )
                 ],
                 1
@@ -5520,126 +5537,32 @@ var render = function() {
   return _c(
     "v-card",
     [
+      _c("v-card-text", {
+        staticClass: "grey lighten-5 text-center",
+        staticStyle: { height: "300px" }
+      }),
+      _vm._v(" "),
       _c(
-        "v-card-actions",
+        "v-card-text",
+        { staticStyle: { height: "100px", position: "relative" } },
         [
           _c(
-            "v-form",
-            {
-              ref: "form",
-              attrs: { "lazy-validation": "" },
-              on: {
-                submit: function($event) {
-                  $event.preventDefault()
-                  return _vm.submit($event)
-                }
-              },
-              model: {
-                value: _vm.valid,
-                callback: function($$v) {
-                  _vm.valid = $$v
-                },
-                expression: "valid"
-              }
-            },
+            "v-fab-transition",
             [
-              _c("v-text-field", {
-                attrs: {
-                  rules: _vm.boatNameRules,
-                  label: "boatName",
-                  required: ""
-                },
-                model: {
-                  value: _vm.rowForm.boatName,
-                  callback: function($$v) {
-                    _vm.$set(_vm.rowForm, "boatName", $$v)
-                  },
-                  expression: "rowForm.boatName"
-                }
-              }),
-              _vm._v(" "),
-              _c(
-                "v-menu",
-                {
-                  attrs: {
-                    "close-on-content-click": false,
-                    "nudge-right": 40,
-                    transition: "scale-transition",
-                    "offset-y": "",
-                    "min-width": "290px"
-                  },
-                  scopedSlots: _vm._u([
-                    {
-                      key: "activator",
-                      fn: function(ref) {
-                        var on = ref.on
-                        var attrs = ref.attrs
-                        return [
-                          _c(
-                            "v-text-field",
-                            _vm._g(
-                              _vm._b(
-                                {
-                                  attrs: {
-                                    label: "Picker without buttons",
-                                    "prepend-icon": "mdi-calendar",
-                                    readonly: ""
-                                  },
-                                  model: {
-                                    value: _vm.rowForm.date,
-                                    callback: function($$v) {
-                                      _vm.$set(_vm.rowForm, "date", $$v)
-                                    },
-                                    expression: "rowForm.date"
-                                  }
-                                },
-                                "v-text-field",
-                                attrs,
-                                false
-                              ),
-                              on
-                            )
-                          )
-                        ]
-                      }
-                    }
-                  ]),
-                  model: {
-                    value: _vm.menu,
-                    callback: function($$v) {
-                      _vm.menu = $$v
-                    },
-                    expression: "menu"
-                  }
-                },
-                [
-                  _vm._v(" "),
-                  _c("v-date-picker", {
-                    on: {
-                      input: function($event) {
-                        _vm.menu = false
-                      }
-                    },
-                    model: {
-                      value: _vm.rowForm.date,
-                      callback: function($$v) {
-                        _vm.$set(_vm.rowForm, "date", $$v)
-                      },
-                      expression: "rowForm.date"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
               _c(
                 "v-btn",
                 {
-                  staticClass: "mr-4",
-                  attrs: { color: "success" },
-                  on: { click: _vm.addRow }
+                  attrs: {
+                    color: "pink",
+                    dark: "",
+                    absolute: "",
+                    top: "",
+                    right: "",
+                    fab: ""
+                  }
                 },
-                [_vm._v("\n                Submit\n            ")]
+                [_c("v-icon", [_vm._v("mdi-plus")])],
+                1
               )
             ],
             1
@@ -66409,14 +66332,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!*****************************************!*\
   !*** ./resources/js/pages/RowTable.vue ***!
   \*****************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _RowTable_vue_vue_type_template_id_27688a9d___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RowTable.vue?vue&type=template&id=27688a9d& */ "./resources/js/pages/RowTable.vue?vue&type=template&id=27688a9d&");
 /* harmony import */ var _RowTable_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RowTable.vue?vue&type=script&lang=js& */ "./resources/js/pages/RowTable.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _RowTable_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _RowTable_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -66446,13 +66370,15 @@ component.options.__file = "resources/js/pages/RowTable.vue"
 /*!******************************************************************!*\
   !*** ./resources/js/pages/RowTable.vue?vue&type=script&lang=js& ***!
   \******************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_RowTable_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./RowTable.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/RowTable.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_RowTable_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_RowTable_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_RowTable_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_RowTable_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_RowTable_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_RowTable_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 

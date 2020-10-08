@@ -52,9 +52,6 @@
 
     export default {
         components: {RowForm},
-        comments: {
-            RowForm
-        },
         data: () => ({
             drawer: null,
         }),
