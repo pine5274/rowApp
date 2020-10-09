@@ -2223,6 +2223,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../util */ "./resources/js/util.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -2444,9 +2445,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      rowErrors: null,
       dialog: false,
       valid: true,
       menuDate: false,
@@ -2489,7 +2498,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.next = 2;
+                _this.dialog = false;
+                _context.next = 3;
                 return axios.post('/api/rows', {
                   date_time: _this.rowForm.date,
                   boat_name: _this.rowForm.boatName,
@@ -2500,12 +2510,32 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   others: _this.rowForm.others
                 });
 
-              case 2:
+              case 3:
                 response = _context.sent;
-                // console.log(this.rowForm)
-                _this.dialog = false;
 
-              case 4:
+                if (!(response.status === _util__WEBPACK_IMPORTED_MODULE_1__["UNPROCESSABLE_ENTITY"])) {
+                  _context.next = 8;
+                  break;
+                }
+
+                _this.rowErrors = response.data.errors;
+                console.log(_this.rowErrors);
+                return _context.abrupt("return", false);
+
+              case 8:
+                // エラーメッセージをクリア
+                _this.rowErrors = null;
+
+                if (!(response.status !== _util__WEBPACK_IMPORTED_MODULE_1__["CREATED"])) {
+                  _context.next = 12;
+                  break;
+                }
+
+                _this.$store.commit('error/setCode', response.status);
+
+                return _context.abrupt("return", false);
+
+              case 12:
               case "end":
                 return _context.stop();
             }
@@ -4976,6 +5006,12 @@ var render = function() {
     "v-row",
     { attrs: { justify: "center" } },
     [
+      _vm.rowErrors
+        ? _c("v-alert", { attrs: { text: "", type: "error" } }, [
+            _vm._v("\n        エラー\n    ")
+          ])
+        : _vm._e(),
+      _vm._v(" "),
       _c(
         "v-dialog",
         {

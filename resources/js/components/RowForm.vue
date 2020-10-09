@@ -1,5 +1,11 @@
 <template>
     <v-row justify="center">
+        <v-alert
+            text
+            type="error"
+            v-if="rowErrors">
+            エラー
+        </v-alert>
         <v-dialog
             v-model="dialog"
             max-width="640px"
@@ -214,8 +220,11 @@
 </template>
 
 <script>
+    import { OK, CREATED, UNPROCESSABLE_ENTITY } from '../util'
+
     export default {
         data: () => ({
+            rowErrors: null,
             dialog: false,
             valid: true,
             menuDate: false,
@@ -248,6 +257,8 @@
                 console.log(this.rowForm)
             },
             async addRow () {
+                this.dialog = false
+
                 const response = await axios.post('/api/rows', {
                     date_time: this.rowForm.date,
                     boat_name: this.rowForm.boatName,
@@ -257,8 +268,22 @@
                     upper_limit_area: this.rowForm.upperLimitArea,
                     others: this.rowForm.others,
                 })
-                // console.log(this.rowForm)
-                this.dialog = false
+
+                // バリデーションエラー
+                if (response.status === UNPROCESSABLE_ENTITY) {
+                    this.rowErrors = response.data.errors
+                    console.log(this.rowErrors)
+                    return false
+                }
+
+                // エラーメッセージをクリア
+                this.rowErrors = null
+
+                if (response.status !== CREATED) {
+                    this.$store.commit('error/setCode', response.status)
+                    return false
+                }
+
             }
         }
     }
