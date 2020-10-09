@@ -17,13 +17,13 @@ class CreateRowsTable extends Migration
 
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->time('date_time');
+            $table->dateTime('date_time');
             $table->string('boat_name');
-            $table->dateTime('on_the_water');
-            $table->dateTime('off_the_water');
+            $table->time('on_the_water');
+            $table->time('off_the_water');
             $table->string('lower_limit_area');
             $table->string('upper_limit_area');
-            $table->string('others');
+            $table->string('others')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

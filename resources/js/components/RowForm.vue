@@ -57,6 +57,7 @@
                                                 label="日付"
                                                 prepend-icon="mdi-calendar"
                                                 readonly
+                                                :rules="rules.required"
                                                 v-bind="attrs"
                                                 v-on="on"
                                             ></v-text-field>
@@ -73,7 +74,7 @@
                                 >
                                     <v-text-field
                                         v-model="rowForm.boatName"
-                                        :rules="boatNameRules"
+                                        :rules="rules.boatName"
                                         label="艇名"
                                         prepend-icon="mdi-sail-boat"
                                         required
@@ -101,6 +102,7 @@
                                                 prepend-icon="mdi-clock-time-four-outline"
                                                 readonly
                                                 required
+                                                :rules="rules.required"
                                                 v-bind="attrs"
                                                 v-on="on"
                                             ></v-text-field>
@@ -135,6 +137,7 @@
                                                 prepend-icon="mdi-clock-time-four-outline"
                                                 readonly
                                                 required
+                                                :rules="rules.required"
                                                 v-bind="attrs"
                                                 v-on="on"
                                             ></v-text-field>
@@ -156,6 +159,7 @@
                                         :items="['1000G', '電線', '豊里', '赤川鉄橋', '毛馬']"
                                         label="下限水域"
                                         prepend-icon="mdi-arrow-collapse-down"
+                                        :rules="rules.required"
                                         required
                                     ></v-select>
                                 </v-col>
@@ -168,6 +172,7 @@
                                         :items="['鳥飼', '島', '仁和寺', '新橋']"
                                         label="上限水域"
                                         prepend-icon="mdi-arrow-collapse-up"
+                                        :rules="rules.required"
                                         required
                                     ></v-select>
                                 </v-col>
@@ -179,7 +184,7 @@
                                         v-model="rowForm.others"
                                         label="その他"
                                         prepend-icon="mdi-pencil-plus-outline"
-                                        required
+                                        :rules="rules.others"
                                     ></v-text-field>
                                 </v-col>
                             </v-row>
@@ -225,21 +230,34 @@
                 upperLimitArea: '',
                 others: '',
             },
-            boatNameRules: [
-                v => !!v || 'Name is required',
-                v => (v && v.length <= 10) || 'Name must be less than 10 characters',
-            ],
+            rules: {
+                boatName: [
+                    v => !!v || '艇名を入力してください',
+                    v => (v && v.length <= 8) || '艇名は8文字以下で入力してください',
+                ],
+                others: [
+                    v => (v && v.length <= 24) || '24文字以下で入力してください',
+                ],
+                required: [
+                    v => !!v || '入力してください',
+                ],
+            },
         }),
         methods: {
             login () {
                 console.log(this.rowForm)
             },
             async addRow () {
-                // const response = await axios.post('/api/rows', {
-                //     boat_name: this.rowForm.boatName,
-                //     date_time: this.rowForm.date,
-                // })
-                console.log(this.rowForm)
+                const response = await axios.post('/api/rows', {
+                    date_time: this.rowForm.date,
+                    boat_name: this.rowForm.boatName,
+                    on_the_water: this.rowForm.onTheWaterTime,
+                    off_the_water: this.rowForm.offTheWaterTime,
+                    lower_limit_area: this.rowForm.lowerLimitArea,
+                    upper_limit_area: this.rowForm.upperLimitArea,
+                    others: this.rowForm.others,
+                })
+                // console.log(this.rowForm)
                 this.dialog = false
             }
         }

@@ -24,7 +24,13 @@ class StoreRow extends FormRequest
     public function rules()
     {
         return [
-            'boat_name' => 'required|max:10',
+            'date_time' => 'required|string|date',
+            'boat_name' => 'required|max:8',
+            'on_the_water' => 'required|date_format:H:i',
+            'off_the_water' => 'required|date_format:H:i',
+            'lower_limit_area' => 'required|string|max:6',
+            'upper_limit_area' => 'required|string|max:6',
+            'others' => 'nullable|max:24',
         ];
     }
 }

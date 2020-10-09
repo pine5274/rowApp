@@ -25,13 +25,16 @@ class RowController extends Controller
     public function store(StoreRow $request)
     {
         $row = new Row();
-        $row->boat_name = $request->get('boat_name');
-        $row->date_time = $request->get('date_time');
         $row->user_id = Auth::user()->id;
+        $row->date_time = $request->get('date_time');
+        $row->boat_name = $request->get('boat_name');
+        $row->on_the_water = $request->get('on_the_water');
+        $row->off_the_water = $request->get('off_the_water');
+        $row->lower_limit_area = $request->get('lower_limit_area');
+        $row->upper_limit_area = $request->get('upper_limit_area');
+        $row->others = $request->get('others');
 
         $row->save();
-
-
     }
 
 

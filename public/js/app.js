@@ -2439,6 +2439,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2456,11 +2461,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         upperLimitArea: '',
         others: ''
       },
-      boatNameRules: [function (v) {
-        return !!v || 'Name is required';
-      }, function (v) {
-        return v && v.length <= 10 || 'Name must be less than 10 characters';
-      }]
+      rules: {
+        boatName: [function (v) {
+          return !!v || '艇名を入力してください';
+        }, function (v) {
+          return v && v.length <= 8 || '艇名は8文字以下で入力してください';
+        }],
+        others: [function (v) {
+          return v && v.length <= 24 || '24文字以下で入力してください';
+        }],
+        required: [function (v) {
+          return !!v || '入力してください';
+        }]
+      }
     };
   },
   methods: {
@@ -2471,18 +2484,28 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                // const response = await axios.post('/api/rows', {
-                //     boat_name: this.rowForm.boatName,
-                //     date_time: this.rowForm.date,
-                // })
-                console.log(_this.rowForm);
-                _this.dialog = false;
+                _context.next = 2;
+                return axios.post('/api/rows', {
+                  date_time: _this.rowForm.date,
+                  boat_name: _this.rowForm.boatName,
+                  on_the_water: _this.rowForm.onTheWaterTime,
+                  off_the_water: _this.rowForm.offTheWaterTime,
+                  lower_limit_area: _this.rowForm.lowerLimitArea,
+                  upper_limit_area: _this.rowForm.upperLimitArea,
+                  others: _this.rowForm.others
+                });
 
               case 2:
+                response = _context.sent;
+                // console.log(this.rowForm)
+                _this.dialog = false;
+
+              case 4:
               case "end":
                 return _context.stop();
             }
@@ -5082,7 +5105,9 @@ var render = function() {
                                                         label: "日付",
                                                         "prepend-icon":
                                                           "mdi-calendar",
-                                                        readonly: ""
+                                                        readonly: "",
+                                                        rules:
+                                                          _vm.rules.required
                                                       },
                                                       model: {
                                                         value: _vm.rowForm.date,
@@ -5147,7 +5172,7 @@ var render = function() {
                                 [
                                   _c("v-text-field", {
                                     attrs: {
-                                      rules: _vm.boatNameRules,
+                                      rules: _vm.rules.boatName,
                                       label: "艇名",
                                       "prepend-icon": "mdi-sail-boat",
                                       required: ""
@@ -5217,7 +5242,9 @@ var render = function() {
                                                         "prepend-icon":
                                                           "mdi-clock-time-four-outline",
                                                         readonly: "",
-                                                        required: ""
+                                                        required: "",
+                                                        rules:
+                                                          _vm.rules.required
                                                       },
                                                       model: {
                                                         value:
@@ -5341,7 +5368,9 @@ var render = function() {
                                                         "prepend-icon":
                                                           "mdi-clock-time-four-outline",
                                                         readonly: "",
-                                                        required: ""
+                                                        required: "",
+                                                        rules:
+                                                          _vm.rules.required
                                                       },
                                                       model: {
                                                         value:
@@ -5428,6 +5457,7 @@ var render = function() {
                                       ],
                                       label: "下限水域",
                                       "prepend-icon": "mdi-arrow-collapse-down",
+                                      rules: _vm.rules.required,
                                       required: ""
                                     },
                                     model: {
@@ -5455,6 +5485,7 @@ var render = function() {
                                       items: ["鳥飼", "島", "仁和寺", "新橋"],
                                       label: "上限水域",
                                       "prepend-icon": "mdi-arrow-collapse-up",
+                                      rules: _vm.rules.required,
                                       required: ""
                                     },
                                     model: {
@@ -5481,7 +5512,7 @@ var render = function() {
                                     attrs: {
                                       label: "その他",
                                       "prepend-icon": "mdi-pencil-plus-outline",
-                                      required: ""
+                                      rules: _vm.rules.others
                                     },
                                     model: {
                                       value: _vm.rowForm.others,
