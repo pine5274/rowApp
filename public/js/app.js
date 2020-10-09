@@ -2321,22 +2321,146 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       dialog: false,
       valid: true,
+      menuDate: false,
+      menuOn: false,
+      menuOff: false,
       rowForm: {
         date: new Date().toISOString().substr(0, 10),
-        boatName: ''
+        boatName: '',
+        onTheWaterTime: null,
+        offTheWaterTime: null,
+        lowerLimitArea: '',
+        upperLimitArea: '',
+        others: ''
       },
       boatNameRules: [function (v) {
         return !!v || 'Name is required';
       }, function (v) {
         return v && v.length <= 10 || 'Name must be less than 10 characters';
-      }],
-      date: new Date().toISOString().substr(0, 10),
-      menu: false
+      }]
     };
   },
   methods: {
@@ -2347,22 +2471,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.next = 2;
-                return axios.post('/api/rows', {
-                  boat_name: _this.rowForm.boatName,
-                  date_time: _this.rowForm.date
-                });
-
-              case 2:
-                response = _context.sent;
+                // const response = await axios.post('/api/rows', {
+                //     boat_name: this.rowForm.boatName,
+                //     date_time: this.rowForm.date,
+                // })
+                console.log(_this.rowForm);
                 _this.dialog = false;
 
-              case 4:
+              case 2:
               case "end":
                 return _context.stop();
             }
@@ -4836,7 +4956,7 @@ var render = function() {
       _c(
         "v-dialog",
         {
-          attrs: { "max-width": "600px" },
+          attrs: { "max-width": "640px" },
           scopedSlots: _vm._u([
             {
               key: "activator",
@@ -4927,93 +5047,459 @@ var render = function() {
                     "v-card-text",
                     [
                       _c(
-                        "v-menu",
-                        {
-                          attrs: {
-                            "close-on-content-click": false,
-                            "nudge-right": 40,
-                            transition: "scale-transition",
-                            "offset-y": "",
-                            "min-width": "290px"
-                          },
-                          scopedSlots: _vm._u([
-                            {
-                              key: "activator",
-                              fn: function(ref) {
-                                var on = ref.on
-                                var attrs = ref.attrs
-                                return [
+                        "v-container",
+                        [
+                          _c(
+                            "v-row",
+                            [
+                              _c(
+                                "v-col",
+                                { staticClass: "py-1", attrs: { cols: "12" } },
+                                [
                                   _c(
-                                    "v-text-field",
-                                    _vm._g(
-                                      _vm._b(
+                                    "v-menu",
+                                    {
+                                      attrs: {
+                                        "close-on-content-click": false,
+                                        "nudge-right": 40,
+                                        transition: "scale-transition",
+                                        "offset-y": "",
+                                        "min-width": "290px"
+                                      },
+                                      scopedSlots: _vm._u([
                                         {
-                                          attrs: {
-                                            label: "Picker without buttons",
-                                            "prepend-icon": "mdi-calendar",
-                                            readonly: ""
-                                          },
-                                          model: {
-                                            value: _vm.rowForm.date,
-                                            callback: function($$v) {
-                                              _vm.$set(_vm.rowForm, "date", $$v)
-                                            },
-                                            expression: "rowForm.date"
+                                          key: "activator",
+                                          fn: function(ref) {
+                                            var on = ref.on
+                                            var attrs = ref.attrs
+                                            return [
+                                              _c(
+                                                "v-text-field",
+                                                _vm._g(
+                                                  _vm._b(
+                                                    {
+                                                      attrs: {
+                                                        label: "日付",
+                                                        "prepend-icon":
+                                                          "mdi-calendar",
+                                                        readonly: ""
+                                                      },
+                                                      model: {
+                                                        value: _vm.rowForm.date,
+                                                        callback: function(
+                                                          $$v
+                                                        ) {
+                                                          _vm.$set(
+                                                            _vm.rowForm,
+                                                            "date",
+                                                            $$v
+                                                          )
+                                                        },
+                                                        expression:
+                                                          "rowForm.date"
+                                                      }
+                                                    },
+                                                    "v-text-field",
+                                                    attrs,
+                                                    false
+                                                  ),
+                                                  on
+                                                )
+                                              )
+                                            ]
+                                          }
+                                        }
+                                      ]),
+                                      model: {
+                                        value: _vm.menuDate,
+                                        callback: function($$v) {
+                                          _vm.menuDate = $$v
+                                        },
+                                        expression: "menuDate"
+                                      }
+                                    },
+                                    [
+                                      _vm._v(" "),
+                                      _c("v-date-picker", {
+                                        on: {
+                                          input: function($event) {
+                                            _vm.menu = false
                                           }
                                         },
-                                        "v-text-field",
-                                        attrs,
-                                        false
-                                      ),
-                                      on
-                                    )
+                                        model: {
+                                          value: _vm.rowForm.date,
+                                          callback: function($$v) {
+                                            _vm.$set(_vm.rowForm, "date", $$v)
+                                          },
+                                          expression: "rowForm.date"
+                                        }
+                                      })
+                                    ],
+                                    1
                                   )
-                                ]
-                              }
-                            }
-                          ]),
-                          model: {
-                            value: _vm.menu,
-                            callback: function($$v) {
-                              _vm.menu = $$v
-                            },
-                            expression: "menu"
-                          }
-                        },
-                        [
-                          _vm._v(" "),
-                          _c("v-date-picker", {
-                            on: {
-                              input: function($event) {
-                                _vm.menu = false
-                              }
-                            },
-                            model: {
-                              value: _vm.rowForm.date,
-                              callback: function($$v) {
-                                _vm.$set(_vm.rowForm, "date", $$v)
-                              },
-                              expression: "rowForm.date"
-                            }
-                          })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-col",
+                                { staticClass: "py-1", attrs: { cols: "12" } },
+                                [
+                                  _c("v-text-field", {
+                                    attrs: {
+                                      rules: _vm.boatNameRules,
+                                      label: "艇名",
+                                      "prepend-icon": "mdi-sail-boat",
+                                      required: ""
+                                    },
+                                    model: {
+                                      value: _vm.rowForm.boatName,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.rowForm, "boatName", $$v)
+                                      },
+                                      expression: "rowForm.boatName"
+                                    }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-col",
+                                { staticClass: "py-1", attrs: { cols: "6" } },
+                                [
+                                  _c(
+                                    "v-menu",
+                                    {
+                                      ref: "menuOn",
+                                      attrs: {
+                                        "close-on-content-click": false,
+                                        "nudge-right": 40,
+                                        "return-value":
+                                          _vm.rowForm.onTheWaterTime,
+                                        transition: "scale-transition",
+                                        "offset-y": "",
+                                        "max-width": "290px",
+                                        "min-width": "290px"
+                                      },
+                                      on: {
+                                        "update:returnValue": function($event) {
+                                          return _vm.$set(
+                                            _vm.rowForm,
+                                            "onTheWaterTime",
+                                            $event
+                                          )
+                                        },
+                                        "update:return-value": function(
+                                          $event
+                                        ) {
+                                          return _vm.$set(
+                                            _vm.rowForm,
+                                            "onTheWaterTime",
+                                            $event
+                                          )
+                                        }
+                                      },
+                                      scopedSlots: _vm._u([
+                                        {
+                                          key: "activator",
+                                          fn: function(ref) {
+                                            var on = ref.on
+                                            var attrs = ref.attrs
+                                            return [
+                                              _c(
+                                                "v-text-field",
+                                                _vm._g(
+                                                  _vm._b(
+                                                    {
+                                                      attrs: {
+                                                        label: "艇庫発",
+                                                        "prepend-icon":
+                                                          "mdi-clock-time-four-outline",
+                                                        readonly: "",
+                                                        required: ""
+                                                      },
+                                                      model: {
+                                                        value:
+                                                          _vm.rowForm
+                                                            .onTheWaterTime,
+                                                        callback: function(
+                                                          $$v
+                                                        ) {
+                                                          _vm.$set(
+                                                            _vm.rowForm,
+                                                            "onTheWaterTime",
+                                                            $$v
+                                                          )
+                                                        },
+                                                        expression:
+                                                          "rowForm.onTheWaterTime"
+                                                      }
+                                                    },
+                                                    "v-text-field",
+                                                    attrs,
+                                                    false
+                                                  ),
+                                                  on
+                                                )
+                                              )
+                                            ]
+                                          }
+                                        }
+                                      ]),
+                                      model: {
+                                        value: _vm.menuOn,
+                                        callback: function($$v) {
+                                          _vm.menuOn = $$v
+                                        },
+                                        expression: "menuOn"
+                                      }
+                                    },
+                                    [
+                                      _vm._v(" "),
+                                      _vm.menuOn
+                                        ? _c("v-time-picker", {
+                                            attrs: { "full-width": "" },
+                                            on: {
+                                              "click:minute": function($event) {
+                                                return _vm.$refs.menuOn.save(
+                                                  _vm.rowForm.onTheWaterTime
+                                                )
+                                              }
+                                            },
+                                            model: {
+                                              value: _vm.rowForm.onTheWaterTime,
+                                              callback: function($$v) {
+                                                _vm.$set(
+                                                  _vm.rowForm,
+                                                  "onTheWaterTime",
+                                                  $$v
+                                                )
+                                              },
+                                              expression:
+                                                "rowForm.onTheWaterTime"
+                                            }
+                                          })
+                                        : _vm._e()
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-col",
+                                { staticClass: "py-1", attrs: { cols: "6" } },
+                                [
+                                  _c(
+                                    "v-menu",
+                                    {
+                                      ref: "menuOff",
+                                      attrs: {
+                                        "close-on-content-click": false,
+                                        "nudge-right": 40,
+                                        "return-value":
+                                          _vm.rowForm.offTheWaterTime,
+                                        transition: "scale-transition",
+                                        "offset-y": "",
+                                        "max-width": "290px",
+                                        "min-width": "290px"
+                                      },
+                                      on: {
+                                        "update:returnValue": function($event) {
+                                          return _vm.$set(
+                                            _vm.rowForm,
+                                            "offTheWaterTime",
+                                            $event
+                                          )
+                                        },
+                                        "update:return-value": function(
+                                          $event
+                                        ) {
+                                          return _vm.$set(
+                                            _vm.rowForm,
+                                            "offTheWaterTime",
+                                            $event
+                                          )
+                                        }
+                                      },
+                                      scopedSlots: _vm._u([
+                                        {
+                                          key: "activator",
+                                          fn: function(ref) {
+                                            var on = ref.on
+                                            var attrs = ref.attrs
+                                            return [
+                                              _c(
+                                                "v-text-field",
+                                                _vm._g(
+                                                  _vm._b(
+                                                    {
+                                                      attrs: {
+                                                        label: "船台着",
+                                                        "prepend-icon":
+                                                          "mdi-clock-time-four-outline",
+                                                        readonly: "",
+                                                        required: ""
+                                                      },
+                                                      model: {
+                                                        value:
+                                                          _vm.rowForm
+                                                            .offTheWaterTime,
+                                                        callback: function(
+                                                          $$v
+                                                        ) {
+                                                          _vm.$set(
+                                                            _vm.rowForm,
+                                                            "offTheWaterTime",
+                                                            $$v
+                                                          )
+                                                        },
+                                                        expression:
+                                                          "rowForm.offTheWaterTime"
+                                                      }
+                                                    },
+                                                    "v-text-field",
+                                                    attrs,
+                                                    false
+                                                  ),
+                                                  on
+                                                )
+                                              )
+                                            ]
+                                          }
+                                        }
+                                      ]),
+                                      model: {
+                                        value: _vm.menuOff,
+                                        callback: function($$v) {
+                                          _vm.menuOff = $$v
+                                        },
+                                        expression: "menuOff"
+                                      }
+                                    },
+                                    [
+                                      _vm._v(" "),
+                                      _vm.menuOff
+                                        ? _c("v-time-picker", {
+                                            attrs: { "full-width": "" },
+                                            on: {
+                                              "click:minute": function($event) {
+                                                return _vm.$refs.menuOff.save(
+                                                  _vm.rowForm.offTheWaterTime
+                                                )
+                                              }
+                                            },
+                                            model: {
+                                              value:
+                                                _vm.rowForm.offTheWaterTime,
+                                              callback: function($$v) {
+                                                _vm.$set(
+                                                  _vm.rowForm,
+                                                  "offTheWaterTime",
+                                                  $$v
+                                                )
+                                              },
+                                              expression:
+                                                "rowForm.offTheWaterTime"
+                                            }
+                                          })
+                                        : _vm._e()
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-col",
+                                { staticClass: "py-1", attrs: { cols: "6" } },
+                                [
+                                  _c("v-select", {
+                                    attrs: {
+                                      items: [
+                                        "1000G",
+                                        "電線",
+                                        "豊里",
+                                        "赤川鉄橋",
+                                        "毛馬"
+                                      ],
+                                      label: "下限水域",
+                                      "prepend-icon": "mdi-arrow-collapse-down",
+                                      required: ""
+                                    },
+                                    model: {
+                                      value: _vm.rowForm.lowerLimitArea,
+                                      callback: function($$v) {
+                                        _vm.$set(
+                                          _vm.rowForm,
+                                          "lowerLimitArea",
+                                          $$v
+                                        )
+                                      },
+                                      expression: "rowForm.lowerLimitArea"
+                                    }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-col",
+                                { staticClass: "py-1", attrs: { cols: "6" } },
+                                [
+                                  _c("v-select", {
+                                    attrs: {
+                                      items: ["鳥飼", "島", "仁和寺", "新橋"],
+                                      label: "上限水域",
+                                      "prepend-icon": "mdi-arrow-collapse-up",
+                                      required: ""
+                                    },
+                                    model: {
+                                      value: _vm.rowForm.upperLimitArea,
+                                      callback: function($$v) {
+                                        _vm.$set(
+                                          _vm.rowForm,
+                                          "upperLimitArea",
+                                          $$v
+                                        )
+                                      },
+                                      expression: "rowForm.upperLimitArea"
+                                    }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-col",
+                                { staticClass: "py-1", attrs: { cols: "12" } },
+                                [
+                                  _c("v-text-field", {
+                                    attrs: {
+                                      label: "その他",
+                                      "prepend-icon": "mdi-pencil-plus-outline",
+                                      required: ""
+                                    },
+                                    model: {
+                                      value: _vm.rowForm.others,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.rowForm, "others", $$v)
+                                      },
+                                      expression: "rowForm.others"
+                                    }
+                                  })
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
                         ],
                         1
-                      ),
-                      _vm._v(" "),
-                      _c("v-text-field", {
-                        attrs: {
-                          rules: _vm.boatNameRules,
-                          label: "boatName",
-                          required: ""
-                        },
-                        model: {
-                          value: _vm.rowForm.boatName,
-                          callback: function($$v) {
-                            _vm.$set(_vm.rowForm, "boatName", $$v)
-                          },
-                          expression: "rowForm.boatName"
-                        }
-                      })
+                      )
                     ],
                     1
                   ),
