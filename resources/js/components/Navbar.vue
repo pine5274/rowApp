@@ -34,15 +34,10 @@
                 <span class="hidden-sm-and-down">Application</span>
             </v-toolbar-title>
             <v-spacer></v-spacer>
-            <router-link to="/">
-                <v-btn text >Home</v-btn>
+            <span v-if="isLogin">{{ username }}</span>
+            <router-link v-else to="/login">
+                <v-btn text to="/login">Login / Register</v-btn>
             </router-link>
-            <div v-if="isNotLogin">
-                <router-link to="/login">
-                    <v-btn text to="/login">Login / Register</v-btn>
-                </router-link>
-            </div>
-            <span v-else>{{ username }}</span>
         </v-app-bar>
     </div>
 </template>
@@ -52,8 +47,8 @@
             drawer: null,
         }),
         computed: {
-            isNotLogin () {
-                return !this.$store.getters['auth/check']
+            isLogin () {
+                return this.$store.getters['auth/check']
             },
             username () {
                 return this.$store.getters['auth/username']

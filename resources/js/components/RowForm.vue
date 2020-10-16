@@ -4,11 +4,12 @@
             text
             type="error"
             v-if="rowErrors">
-            エラー
+            不正な入力です
         </v-alert>
         <v-dialog
             v-model="dialog"
             max-width="640px"
+            form v-if="isLogin"
         >
             <template v-slot:activator="{ on, attrs }">
                 <v-card-text
@@ -284,6 +285,11 @@
                     return false
                 }
 
+            }
+        },
+        computed: {
+            isLogin() {
+                return this.$store.getters['auth/check']
             }
         }
     }
