@@ -1,21 +1,23 @@
 <template>
     <v-app id="inspire">
-        <Navbar/>
+        <Navbar></Navbar>
         <main>
             <v-main>
+                <RowForm></RowForm>
                 <v-container>
                     <RouterView/>
                 </v-container>
             </v-main>
         </main>
-        <Footer/>
+        <Footer></Footer>
     </v-app>
 </template>
 
 <script>
+    import { INTERNAL_SERVER_ERROR } from './util'
     import Navbar from './components/Navbar.vue'
     import Footer from './components/Footer.vue'
-    import { INTERNAL_SERVER_ERROR } from './util'
+    import RowForm from "./components/RowForm";
 
     export default {
         props: {
@@ -25,6 +27,7 @@
             drawer: null,
         }),
         components: {
+            RowForm,
             Navbar,
             Footer,
         },

@@ -12,11 +12,7 @@
             form v-if="isLogin"
         >
             <template v-slot:activator="{ on, attrs }">
-                <v-card-text
-                    style="height: 800px;"
-                >
-                </v-card-text>
-                <v-card-text style="height: 100px; position: relative">
+                <v-card-text style="position: relative">
                     <v-fab-transition>
                         <v-btn
                             color="success"
