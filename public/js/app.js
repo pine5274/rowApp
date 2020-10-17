@@ -2821,9 +2821,122 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      dialog: false,
+      dialogDelete: false,
       headers: [{
         text: 'Dessert (100g serving)',
         align: 'start',
@@ -2831,92 +2944,165 @@ __webpack_require__.r(__webpack_exports__);
         value: 'name'
       }, {
         text: 'Calories',
-        value: 'calories'
+        value: 'calories',
+        width: "20%"
       }, {
         text: 'Fat (g)',
-        value: 'fat'
+        value: 'fat',
+        width: "20%"
       }, {
         text: 'Carbs (g)',
-        value: 'carbs'
+        value: 'carbs',
+        width: "20%"
       }, {
         text: 'Protein (g)',
-        value: 'protein'
+        value: 'protein',
+        width: "20%"
       }, {
-        text: 'Iron (%)',
-        value: 'iron'
+        text: 'Actions',
+        value: 'actions',
+        width: "20%",
+        sortable: false
       }],
-      desserts: [{
+      desserts: [],
+      editedIndex: -1,
+      editedItem: {
+        name: '',
+        calories: 0,
+        fat: 0,
+        carbs: 0,
+        protein: 0
+      },
+      defaultItem: {
+        name: '',
+        calories: 0,
+        fat: 0,
+        carbs: 0,
+        protein: 0
+      }
+    };
+  },
+  computed: {
+    formTitle: function formTitle() {
+      return this.editedIndex === -1 ? 'New Item' : 'Edit Item';
+    }
+  },
+  watch: {
+    dialog: function dialog(val) {
+      val || this.close();
+    },
+    dialogDelete: function dialogDelete(val) {
+      val || this.closeDelete();
+    }
+  },
+  created: function created() {
+    this.initialize();
+  },
+  methods: {
+    initialize: function initialize() {
+      this.desserts = [{
         name: 'Frozen Yogurt',
-        calories: 200,
+        calories: 159,
         fat: 6.0,
         carbs: 24,
-        protein: 4.0,
-        iron: '1%'
+        protein: 4.0
       }, {
         name: 'Ice cream sandwich',
-        calories: 200,
+        calories: 237,
         fat: 9.0,
         carbs: 37,
-        protein: 4.3,
-        iron: '1%'
+        protein: 4.3
       }, {
         name: 'Eclair',
-        calories: 300,
+        calories: 262,
         fat: 16.0,
         carbs: 23,
-        protein: 6.0,
-        iron: '7%'
+        protein: 6.0
       }, {
         name: 'Cupcake',
-        calories: 300,
+        calories: 305,
         fat: 3.7,
         carbs: 67,
-        protein: 4.3,
-        iron: '8%'
+        protein: 4.3
       }, {
         name: 'Gingerbread',
-        calories: 400,
+        calories: 356,
         fat: 16.0,
         carbs: 49,
-        protein: 3.9,
-        iron: '16%'
+        protein: 3.9
       }, {
         name: 'Jelly bean',
-        calories: 400,
+        calories: 375,
         fat: 0.0,
         carbs: 94,
-        protein: 0.0,
-        iron: '0%'
+        protein: 0.0
       }, {
         name: 'Lollipop',
-        calories: 400,
+        calories: 392,
         fat: 0.2,
         carbs: 98,
-        protein: 0,
-        iron: '2%'
+        protein: 0
       }, {
         name: 'Honeycomb',
-        calories: 400,
+        calories: 408,
         fat: 3.2,
         carbs: 87,
-        protein: 6.5,
-        iron: '45%'
+        protein: 6.5
       }, {
         name: 'Donut',
-        calories: 500,
+        calories: 452,
         fat: 25.0,
         carbs: 51,
-        protein: 4.9,
-        iron: '22%'
+        protein: 4.9
       }, {
         name: 'KitKat',
-        calories: 500,
+        calories: 518,
         fat: 26.0,
         carbs: 65,
-        protein: 7,
-        iron: '6%'
-      }]
-    };
+        protein: 7
+      }];
+    },
+    editItem: function editItem(item) {
+      this.editedIndex = this.desserts.indexOf(item);
+      this.editedItem = Object.assign({}, item);
+      this.dialog = true;
+    },
+    deleteItem: function deleteItem(item) {
+      this.editedIndex = this.desserts.indexOf(item);
+      this.editedItem = Object.assign({}, item);
+      this.dialogDelete = true;
+    },
+    deleteItemConfirm: function deleteItemConfirm() {
+      this.desserts.splice(this.editedIndex, 1);
+      this.closeDelete();
+    },
+    close: function close() {
+      var _this = this;
+
+      this.dialog = false;
+      this.$nextTick(function () {
+        _this.editedItem = Object.assign({}, _this.defaultItem);
+        _this.editedIndex = -1;
+      });
+    },
+    closeDelete: function closeDelete() {
+      var _this2 = this;
+
+      this.dialogDelete = false;
+      this.$nextTick(function () {
+        _this2.editedItem = Object.assign({}, _this2.defaultItem);
+        _this2.editedIndex = -1;
+      });
+    },
+    save: function save() {
+      if (this.editedIndex > -1) {
+        Object.assign(this.desserts[this.editedIndex], this.editedItem);
+      } else {
+        this.desserts.push(this.editedItem);
+      }
+
+      this.close();
+    }
   }
 });
 
@@ -6175,10 +6361,296 @@ var render = function() {
     attrs: {
       headers: _vm.headers,
       items: _vm.desserts,
-      "sort-by": ["calories", "fat"],
-      "sort-desc": [false, true],
-      "multi-sort": ""
-    }
+      "sort-by": "calories",
+      "mobile-breakpoint": "10"
+    },
+    scopedSlots: _vm._u([
+      {
+        key: "top",
+        fn: function() {
+          return [
+            _c(
+              "v-toolbar",
+              { attrs: { flat: "" } },
+              [
+                _c("v-toolbar-title", [_vm._v("My CRUD")]),
+                _vm._v(" "),
+                _c("v-divider", {
+                  staticClass: "mx-4",
+                  attrs: { inset: "", vertical: "" }
+                }),
+                _vm._v(" "),
+                _c("v-spacer"),
+                _vm._v(" "),
+                _c(
+                  "v-dialog",
+                  {
+                    attrs: { "max-width": "500px" },
+                    scopedSlots: _vm._u([
+                      {
+                        key: "activator",
+                        fn: function(ref) {
+                          var on = ref.on
+                          var attrs = ref.attrs
+                          return [
+                            _c(
+                              "v-btn",
+                              _vm._g(
+                                _vm._b(
+                                  {
+                                    staticClass: "mb-2",
+                                    attrs: { color: "primary", dark: "" }
+                                  },
+                                  "v-btn",
+                                  attrs,
+                                  false
+                                ),
+                                on
+                              ),
+                              [
+                                _vm._v(
+                                  "\n                        New Item\n                    "
+                                )
+                              ]
+                            )
+                          ]
+                        }
+                      }
+                    ]),
+                    model: {
+                      value: _vm.dialog,
+                      callback: function($$v) {
+                        _vm.dialog = $$v
+                      },
+                      expression: "dialog"
+                    }
+                  },
+                  [
+                    _vm._v(" "),
+                    _c(
+                      "v-card",
+                      [
+                        _c("v-card-title", [
+                          _c("span", { staticClass: "headline" }, [
+                            _vm._v(_vm._s(_vm.formTitle))
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "v-card-text",
+                          [
+                            _c(
+                              "v-container",
+                              [
+                                _c("v-text-field", {
+                                  attrs: { label: "Dessert name" },
+                                  model: {
+                                    value: _vm.editedItem.name,
+                                    callback: function($$v) {
+                                      _vm.$set(_vm.editedItem, "name", $$v)
+                                    },
+                                    expression: "editedItem.name"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("v-text-field", {
+                                  attrs: { label: "Calories" },
+                                  model: {
+                                    value: _vm.editedItem.calories,
+                                    callback: function($$v) {
+                                      _vm.$set(_vm.editedItem, "calories", $$v)
+                                    },
+                                    expression: "editedItem.calories"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("v-text-field", {
+                                  attrs: { label: "Fat (g)" },
+                                  model: {
+                                    value: _vm.editedItem.fat,
+                                    callback: function($$v) {
+                                      _vm.$set(_vm.editedItem, "fat", $$v)
+                                    },
+                                    expression: "editedItem.fat"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("v-text-field", {
+                                  attrs: { label: "Carbs (g)" },
+                                  model: {
+                                    value: _vm.editedItem.carbs,
+                                    callback: function($$v) {
+                                      _vm.$set(_vm.editedItem, "carbs", $$v)
+                                    },
+                                    expression: "editedItem.carbs"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("v-text-field", {
+                                  attrs: { label: "Protein (g)" },
+                                  model: {
+                                    value: _vm.editedItem.protein,
+                                    callback: function($$v) {
+                                      _vm.$set(_vm.editedItem, "protein", $$v)
+                                    },
+                                    expression: "editedItem.protein"
+                                  }
+                                })
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-card-actions",
+                          [
+                            _c("v-spacer"),
+                            _vm._v(" "),
+                            _c(
+                              "v-btn",
+                              {
+                                attrs: { color: "blue darken-1", text: "" },
+                                on: { click: _vm.close }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                            Cancel\n                        "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-btn",
+                              {
+                                attrs: { color: "blue darken-1", text: "" },
+                                on: { click: _vm.save }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                            Save\n                        "
+                                )
+                              ]
+                            )
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "v-dialog",
+                  {
+                    attrs: { "max-width": "500px" },
+                    model: {
+                      value: _vm.dialogDelete,
+                      callback: function($$v) {
+                        _vm.dialogDelete = $$v
+                      },
+                      expression: "dialogDelete"
+                    }
+                  },
+                  [
+                    _c(
+                      "v-card",
+                      [
+                        _c("v-card-title", { staticClass: "headline" }, [
+                          _vm._v("Are you sure you want to delete this item?")
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "v-card-actions",
+                          [
+                            _c("v-spacer"),
+                            _vm._v(" "),
+                            _c(
+                              "v-btn",
+                              {
+                                attrs: { color: "blue darken-1", text: "" },
+                                on: { click: _vm.closeDelete }
+                              },
+                              [_vm._v("Cancel")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-btn",
+                              {
+                                attrs: { color: "blue darken-1", text: "" },
+                                on: { click: _vm.deleteItemConfirm }
+                              },
+                              [_vm._v("OK")]
+                            ),
+                            _vm._v(" "),
+                            _c("v-spacer")
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          ]
+        },
+        proxy: true
+      },
+      {
+        key: "item.actions",
+        fn: function(ref) {
+          var item = ref.item
+          return [
+            _c(
+              "v-icon",
+              {
+                staticClass: "mr-2",
+                attrs: { small: "" },
+                on: {
+                  click: function($event) {
+                    return _vm.editItem(item)
+                  }
+                }
+              },
+              [_vm._v("\n            mdi-pencil\n        ")]
+            ),
+            _vm._v(" "),
+            _c(
+              "v-icon",
+              {
+                attrs: { small: "" },
+                on: {
+                  click: function($event) {
+                    return _vm.deleteItem(item)
+                  }
+                }
+              },
+              [_vm._v("\n            mdi-delete\n        ")]
+            )
+          ]
+        }
+      },
+      {
+        key: "no-data",
+        fn: function() {
+          return [
+            _c(
+              "v-btn",
+              { attrs: { color: "primary" }, on: { click: _vm.initialize } },
+              [_vm._v("\n            Reset\n        ")]
+            )
+          ]
+        },
+        proxy: true
+      }
+    ])
   })
 }
 var staticRenderFns = []
