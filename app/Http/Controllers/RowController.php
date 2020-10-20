@@ -13,13 +13,14 @@ class RowController extends Controller
     public function __construct()
     {
         // 認証が必要
-        $this->middleware('auth');
+        $this->middleware('auth')->except(['index']);
     }
 
     public function index()
     {
-        return Row::all();
+        $rows = Row::with(['owner'])->get();
 
+        return $rows;
     }
 
     public function store(StoreRow $request)

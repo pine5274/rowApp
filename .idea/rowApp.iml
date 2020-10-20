@@ -114,5 +114,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="photoApp2" />
+    <orderEntry type="module" module-name="photoApp2" />
   </component>
 </module>

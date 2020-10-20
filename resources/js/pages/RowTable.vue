@@ -120,8 +120,13 @@
 </template>
 
 <script>
+    import { OK } from '../util'
+
     export default {
         data: () => ({
+            rows: [],
+
+
             dialog: false,
             dialogDelete: false,
             headers: [
@@ -168,6 +173,13 @@
             dialogDelete (val) {
                 val || this.closeDelete()
             },
+
+            $route: {
+                async handler () {
+                    await this.fetchPhotos()
+                },
+                immediate: true
+            }
         },
 
         created () {
@@ -175,6 +187,20 @@
         },
 
         methods: {
+            async fetchPhotos () {
+                const response = await axios.get('/api/rows')
+
+                if (response.status !== OK) {
+                    this.$store.commit('error/setCode', response.status)
+                    console.log('failed')
+                    return false
+                }
+
+                this.rows = response.data
+                console.log(this.rows)
+            },
+
+
             initialize () {
                 this.desserts = [
                     {

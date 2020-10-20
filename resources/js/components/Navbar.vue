@@ -31,7 +31,7 @@
         >
             <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
             <v-toolbar-title>
-                <span class="hidden-sm-and-down">Application</span>
+                <v-btn text to="/">出艇表</v-btn>
             </v-toolbar-title>
             <v-spacer></v-spacer>
             <span v-if="isLogin">{{ username }}</span>
