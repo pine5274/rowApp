@@ -3,7 +3,6 @@
         <Navbar></Navbar>
         <main>
             <v-main>
-                <RowForm></RowForm>
                 <v-container>
                     <RouterView/>
                 </v-container>
@@ -17,7 +16,6 @@
     import { INTERNAL_SERVER_ERROR } from './util'
     import Navbar from './components/Navbar.vue'
     import Footer from './components/Footer.vue'
-    import RowForm from "./components/RowForm";
 
     export default {
         props: {
@@ -27,7 +25,6 @@
             drawer: null,
         }),
         components: {
-            RowForm,
             Navbar,
             Footer,
         },

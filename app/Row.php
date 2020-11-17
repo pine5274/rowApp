@@ -13,7 +13,7 @@ class Row extends Model
 
     /** JSONに含める属性 */
     protected $visible = [
-        'owner', 'date_time', 'boat_name', 'on_the_water', 'off_the_water', 'lower_limit_area',
+        'owner', 'date_time', 'boat_name', 'on_the_water', 'off_the_water', 'lower_limit_area', 'upper_limit_area',
     ];
 
     public function owner()

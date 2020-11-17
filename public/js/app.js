@@ -2008,7 +2008,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./util */ "./resources/js/util.js");
 /* harmony import */ var _components_Navbar_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Navbar.vue */ "./resources/js/components/Navbar.vue");
 /* harmony import */ var _components_Footer_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Footer.vue */ "./resources/js/components/Footer.vue");
-/* harmony import */ var _components_RowForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/RowForm */ "./resources/js/components/RowForm.vue");
 //
 //
 //
@@ -2023,8 +2022,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-
 
 
 
@@ -2038,7 +2035,6 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   components: {
-    RowForm: _components_RowForm__WEBPACK_IMPORTED_MODULE_3__["default"],
     Navbar: _components_Navbar_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     Footer: _components_Footer_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
@@ -2205,344 +2201,6 @@ __webpack_require__.r(__webpack_exports__);
     },
     username: function username() {
       return this.$store.getters['auth/username'];
-    }
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/RowForm.vue?vue&type=script&lang=js&":
-/*!******************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/RowForm.vue?vue&type=script&lang=js& ***!
-  \******************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../util */ "./resources/js/util.js");
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      rowErrors: null,
-      dialog: false,
-      valid: true,
-      menuDate: false,
-      menuOn: false,
-      menuOff: false,
-      rowForm: {
-        date: new Date().toISOString().substr(0, 10),
-        boatName: '',
-        onTheWaterTime: null,
-        offTheWaterTime: null,
-        lowerLimitArea: '',
-        upperLimitArea: '',
-        others: ''
-      },
-      rules: {
-        boatName: [function (v) {
-          return !!v || '艇名を入力してください';
-        }, function (v) {
-          return v && v.length <= 8 || '艇名は8文字以下で入力してください';
-        }],
-        others: [function (v) {
-          return v && v.length <= 24 || '24文字以下で入力してください';
-        }],
-        required: [function (v) {
-          return !!v || '入力してください';
-        }]
-      }
-    };
-  },
-  methods: {
-    login: function login() {
-      console.log(this.rowForm);
-    },
-    addRow: function addRow() {
-      var _this = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var response;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _this.dialog = false;
-                _context.next = 3;
-                return axios.post('/api/rows', {
-                  date_time: _this.rowForm.date,
-                  boat_name: _this.rowForm.boatName,
-                  on_the_water: _this.rowForm.onTheWaterTime,
-                  off_the_water: _this.rowForm.offTheWaterTime,
-                  lower_limit_area: _this.rowForm.lowerLimitArea,
-                  upper_limit_area: _this.rowForm.upperLimitArea,
-                  others: _this.rowForm.others
-                });
-
-              case 3:
-                response = _context.sent;
-
-                if (!(response.status === _util__WEBPACK_IMPORTED_MODULE_1__["UNPROCESSABLE_ENTITY"])) {
-                  _context.next = 8;
-                  break;
-                }
-
-                _this.rowErrors = response.data.errors;
-                console.log(_this.rowErrors);
-                return _context.abrupt("return", false);
-
-              case 8:
-                // エラーメッセージをクリア
-                _this.rowErrors = null;
-
-                if (!(response.status !== _util__WEBPACK_IMPORTED_MODULE_1__["CREATED"])) {
-                  _context.next = 12;
-                  break;
-                }
-
-                _this.$store.commit('error/setCode', response.status);
-
-                return _context.abrupt("return", false);
-
-              case 12:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }))();
-    }
-  },
-  computed: {
-    isLogin: function isLogin() {
-      return this.$store.getters['auth/check'];
     }
   }
 });
@@ -2941,70 +2599,332 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       rows: [],
       dialog: false,
-      dialogDelete: false,
+      valid: true,
+      menuDate: false,
+      menuOn: false,
+      menuOff: false,
+      rowForm: {
+        date: new Date().toISOString().substr(0, 10),
+        boatName: '',
+        onTheWaterTime: null,
+        offTheWaterTime: null,
+        lowerLimitArea: '',
+        upperLimitArea: '',
+        others: ''
+      },
+      rules: {
+        boatName: [function (v) {
+          return !!v || '艇名を入力してください';
+        }, function (v) {
+          return v && v.length <= 8 || '艇名は8文字以下で入力してください';
+        }],
+        others: [function (v) {
+          return v && v.length <= 24 || '24文字以下で入力してください';
+        }],
+        required: [function (v) {
+          return !!v || '入力してください';
+        }]
+      },
+      // dialogDelete: false,
       headers: [{
-        text: 'Dessert (100g serving)',
+        text: '艇名',
         align: 'start',
         sortable: false,
-        value: 'name'
+        value: 'boat_name',
+        width: "13%"
       }, {
-        text: 'Calories',
-        value: 'calories',
-        width: "20%"
+        text: '責任者',
+        value: 'owner.name',
+        width: "13%",
+        sortable: false
       }, {
-        text: 'Fat (g)',
-        value: 'fat',
-        width: "20%"
+        text: '艇庫発',
+        value: 'on_the_water',
+        width: "15%"
       }, {
-        text: 'Carbs (g)',
-        value: 'carbs',
-        width: "20%"
+        text: '船台着',
+        value: 'off_the_water',
+        width: "15%"
       }, {
-        text: 'Protein (g)',
-        value: 'protein',
-        width: "20%"
+        text: '下限水域',
+        value: 'lower_limit_area',
+        sortable: false,
+        width: "15%"
+      }, {
+        text: '上限水域',
+        value: 'upper_limit_area',
+        sortable: false,
+        width: "15%"
       }, {
         text: 'Actions',
         value: 'actions',
-        width: "20%",
-        sortable: false
-      }],
-      desserts: [],
-      editedIndex: -1,
-      editedItem: {
-        name: '',
-        calories: 0,
-        fat: 0,
-        carbs: 0,
-        protein: 0
-      },
-      defaultItem: {
-        name: '',
-        calories: 0,
-        fat: 0,
-        carbs: 0,
-        protein: 0
-      }
+        sortable: false,
+        width: "13%"
+      }] // desserts: [],
+      // editedIndex: -1,
+      // editedItem: {
+      //     name: '',
+      //     calories: 0,
+      //     fat: 0,
+      //     carbs: 0,
+      //     protein: 0,
+      // },
+      // defaultItem: {
+      //     name: '',
+      //     calories: 0,
+      //     fat: 0,
+      //     carbs: 0,
+      //     protein: 0,
+      // },
+
     };
   },
   computed: {
     formTitle: function formTitle() {
       return this.editedIndex === -1 ? 'New Item' : 'Edit Item';
+    },
+    isLogin: function isLogin() {
+      return this.$store.getters['auth/check'];
     }
   },
   watch: {
-    dialog: function dialog(val) {
-      val || this.close();
-    },
-    dialogDelete: function dialogDelete(val) {
-      val || this.closeDelete();
-    },
+    // dialog (val) {
+    //     val || this.close()
+    // },
+    // dialogDelete (val) {
+    //     val || this.closeDelete()
+    // },
     $route: {
       handler: function handler() {
         var _this = this;
@@ -3015,7 +2935,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               switch (_context.prev = _context.next) {
                 case 0:
                   _context.next = 2;
-                  return _this.fetchPhotos();
+                  return _this.fetchRows();
 
                 case 2:
                 case "end":
@@ -3028,11 +2948,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       immediate: true
     }
   },
-  created: function created() {
-    this.initialize();
-  },
   methods: {
-    fetchPhotos: function fetchPhotos() {
+    fetchRows: function fetchRows() {
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
@@ -3048,20 +2965,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 response = _context2.sent;
 
                 if (!(response.status !== _util__WEBPACK_IMPORTED_MODULE_1__["OK"])) {
-                  _context2.next = 7;
+                  _context2.next = 6;
                   break;
                 }
 
                 _this2.$store.commit('error/setCode', response.status);
 
-                console.log('failed');
                 return _context2.abrupt("return", false);
 
-              case 7:
+              case 6:
                 _this2.rows = response.data;
-                console.log(_this2.rows);
 
-              case 9:
+              case 7:
               case "end":
                 return _context2.stop();
             }
@@ -3069,110 +2984,107 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee2);
       }))();
     },
-    initialize: function initialize() {
-      this.desserts = [{
-        name: 'Frozen Yogurt',
-        calories: 159,
-        fat: 6.0,
-        carbs: 24,
-        protein: 4.0
-      }, {
-        name: 'Ice cream sandwich',
-        calories: 237,
-        fat: 9.0,
-        carbs: 37,
-        protein: 4.3
-      }, {
-        name: 'Eclair',
-        calories: 262,
-        fat: 16.0,
-        carbs: 23,
-        protein: 6.0
-      }, {
-        name: 'Cupcake',
-        calories: 305,
-        fat: 3.7,
-        carbs: 67,
-        protein: 4.3
-      }, {
-        name: 'Gingerbread',
-        calories: 356,
-        fat: 16.0,
-        carbs: 49,
-        protein: 3.9
-      }, {
-        name: 'Jelly bean',
-        calories: 375,
-        fat: 0.0,
-        carbs: 94,
-        protein: 0.0
-      }, {
-        name: 'Lollipop',
-        calories: 392,
-        fat: 0.2,
-        carbs: 98,
-        protein: 0
-      }, {
-        name: 'Honeycomb',
-        calories: 408,
-        fat: 3.2,
-        carbs: 87,
-        protein: 6.5
-      }, {
-        name: 'Donut',
-        calories: 452,
-        fat: 25.0,
-        carbs: 51,
-        protein: 4.9
-      }, {
-        name: 'KitKat',
-        calories: 518,
-        fat: 26.0,
-        carbs: 65,
-        protein: 7
-      }];
-    },
-    editItem: function editItem(item) {
-      this.editedIndex = this.desserts.indexOf(item);
-      this.editedItem = Object.assign({}, item);
-      this.dialog = true;
-    },
-    deleteItem: function deleteItem(item) {
-      this.editedIndex = this.desserts.indexOf(item);
-      this.editedItem = Object.assign({}, item);
-      this.dialogDelete = true;
-    },
-    deleteItemConfirm: function deleteItemConfirm() {
-      this.desserts.splice(this.editedIndex, 1);
-      this.closeDelete();
-    },
-    close: function close() {
+    addRow: function addRow() {
       var _this3 = this;
 
-      this.dialog = false;
-      this.$nextTick(function () {
-        _this3.editedItem = Object.assign({}, _this3.defaultItem);
-        _this3.editedIndex = -1;
-      });
-    },
-    closeDelete: function closeDelete() {
-      var _this4 = this;
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _this3.dialog = false;
+                _context3.next = 3;
+                return axios.post('/api/rows', {
+                  date_time: _this3.rowForm.date,
+                  boat_name: _this3.rowForm.boatName,
+                  on_the_water: _this3.rowForm.onTheWaterTime,
+                  off_the_water: _this3.rowForm.offTheWaterTime,
+                  lower_limit_area: _this3.rowForm.lowerLimitArea,
+                  upper_limit_area: _this3.rowForm.upperLimitArea,
+                  others: _this3.rowForm.others
+                });
 
-      this.dialogDelete = false;
-      this.$nextTick(function () {
-        _this4.editedItem = Object.assign({}, _this4.defaultItem);
-        _this4.editedIndex = -1;
-      });
-    },
-    save: function save() {
-      if (this.editedIndex > -1) {
-        Object.assign(this.desserts[this.editedIndex], this.editedItem);
-      } else {
-        this.desserts.push(this.editedItem);
-      }
+              case 3:
+                response = _context3.sent;
 
-      this.close();
-    }
+                if (!(response.status === _util__WEBPACK_IMPORTED_MODULE_1__["UNPROCESSABLE_ENTITY"])) {
+                  _context3.next = 8;
+                  break;
+                }
+
+                _this3.rowErrors = response.data.errors;
+                console.log(_this3.rowErrors);
+                return _context3.abrupt("return", false);
+
+              case 8:
+                // エラーメッセージをクリア
+                _this3.rowErrors = null;
+
+                if (!(response.status !== _util__WEBPACK_IMPORTED_MODULE_1__["OK"])) {
+                  _context3.next = 12;
+                  break;
+                }
+
+                _this3.$store.commit('error/setCode', response.status);
+
+                return _context3.abrupt("return", false);
+
+              case 12:
+                _this3.$router.go({
+                  path: _this3.$router.currentRoute.path,
+                  force: true
+                });
+
+              case 13:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }))();
+    } // editItem (item) {
+    //     this.editedIndex = this.desserts.indexOf(item)
+    //     this.editedItem = Object.assign({}, item)
+    //     this.dialog = true
+    // },
+    //
+    // deleteItem (item) {
+    //     this.editedIndex = this.desserts.indexOf(item)
+    //     this.editedItem = Object.assign({}, item)
+    //     this.dialogDelete = true
+    // },
+    //
+    // deleteItemConfirm () {
+    //     this.desserts.splice(this.editedIndex, 1)
+    //     this.closeDelete()
+    // },
+    //
+    // close () {
+    //     this.dialog = false
+    //     this.$nextTick(() => {
+    //         this.editedItem = Object.assign({}, this.defaultItem)
+    //         this.editedIndex = -1
+    //     })
+    // },
+    //
+    // closeDelete () {
+    //     this.dialogDelete = false
+    //     this.$nextTick(() => {
+    //         this.editedItem = Object.assign({}, this.defaultItem)
+    //         this.editedIndex = -1
+    //     })
+    // },
+    //
+    // save () {
+    //     if (this.editedIndex > -1) {
+    //         Object.assign(this.desserts[this.editedIndex], this.editedItem)
+    //     } else {
+    //         this.desserts.push(this.editedItem)
+    //     }
+    //     this.close()
+    // },
+
   }
 });
 
@@ -5139,17 +5051,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "main",
-        [
-          _c(
-            "v-main",
-            [
-              _c("RowForm"),
-              _vm._v(" "),
-              _c("v-container", [_c("RouterView")], 1)
-            ],
-            1
-          )
-        ],
+        [_c("v-main", [_c("v-container", [_c("RouterView")], 1)], 1)],
         1
       ),
       _vm._v(" "),
@@ -5327,719 +5229,6 @@ var render = function() {
         ],
         1
       )
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/RowForm.vue?vue&type=template&id=1d12d823&":
-/*!**********************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/RowForm.vue?vue&type=template&id=1d12d823& ***!
-  \**********************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "v-row",
-    { attrs: { justify: "center" } },
-    [
-      _vm.rowErrors
-        ? _c("v-alert", { attrs: { text: "", type: "error" } }, [
-            _vm._v("\n        不正な入力です\n    ")
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.isLogin
-        ? _c(
-            "v-dialog",
-            {
-              attrs: { "max-width": "640px", form: "" },
-              scopedSlots: _vm._u(
-                [
-                  {
-                    key: "activator",
-                    fn: function(ref) {
-                      var on = ref.on
-                      var attrs = ref.attrs
-                      return [
-                        _c(
-                          "v-card-text",
-                          { staticStyle: { position: "relative" } },
-                          [
-                            _c(
-                              "v-fab-transition",
-                              [
-                                _c(
-                                  "v-btn",
-                                  _vm._g(
-                                    _vm._b(
-                                      {
-                                        attrs: {
-                                          color: "success",
-                                          dark: "",
-                                          absolute: "",
-                                          top: "",
-                                          right: "",
-                                          fab: ""
-                                        }
-                                      },
-                                      "v-btn",
-                                      attrs,
-                                      false
-                                    ),
-                                    on
-                                  ),
-                                  [_c("v-icon", [_vm._v("mdi-plus")])],
-                                  1
-                                )
-                              ],
-                              1
-                            )
-                          ],
-                          1
-                        )
-                      ]
-                    }
-                  }
-                ],
-                null,
-                false,
-                711451508
-              ),
-              model: {
-                value: _vm.dialog,
-                callback: function($$v) {
-                  _vm.dialog = $$v
-                },
-                expression: "dialog"
-              }
-            },
-            [
-              _vm._v(" "),
-              _c(
-                "v-card",
-                [
-                  _c(
-                    "v-form",
-                    {
-                      ref: "form",
-                      attrs: { "lazy-validation": "" },
-                      on: {
-                        submit: function($event) {
-                          $event.preventDefault()
-                          return _vm.submit($event)
-                        }
-                      },
-                      model: {
-                        value: _vm.valid,
-                        callback: function($$v) {
-                          _vm.valid = $$v
-                        },
-                        expression: "valid"
-                      }
-                    },
-                    [
-                      _c("v-card-title", { staticClass: "headline" }, [
-                        _vm._v("\n                    出艇表\n                ")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "v-card-text",
-                        [
-                          _c(
-                            "v-container",
-                            [
-                              _c(
-                                "v-row",
-                                [
-                                  _c(
-                                    "v-col",
-                                    {
-                                      staticClass: "py-1",
-                                      attrs: { cols: "12" }
-                                    },
-                                    [
-                                      _c(
-                                        "v-menu",
-                                        {
-                                          attrs: {
-                                            "close-on-content-click": false,
-                                            "nudge-right": 40,
-                                            transition: "scale-transition",
-                                            "offset-y": "",
-                                            "min-width": "290px"
-                                          },
-                                          scopedSlots: _vm._u(
-                                            [
-                                              {
-                                                key: "activator",
-                                                fn: function(ref) {
-                                                  var on = ref.on
-                                                  var attrs = ref.attrs
-                                                  return [
-                                                    _c(
-                                                      "v-text-field",
-                                                      _vm._g(
-                                                        _vm._b(
-                                                          {
-                                                            attrs: {
-                                                              label: "日付",
-                                                              "prepend-icon":
-                                                                "mdi-calendar",
-                                                              readonly: "",
-                                                              rules:
-                                                                _vm.rules
-                                                                  .required
-                                                            },
-                                                            model: {
-                                                              value:
-                                                                _vm.rowForm
-                                                                  .date,
-                                                              callback: function(
-                                                                $$v
-                                                              ) {
-                                                                _vm.$set(
-                                                                  _vm.rowForm,
-                                                                  "date",
-                                                                  $$v
-                                                                )
-                                                              },
-                                                              expression:
-                                                                "rowForm.date"
-                                                            }
-                                                          },
-                                                          "v-text-field",
-                                                          attrs,
-                                                          false
-                                                        ),
-                                                        on
-                                                      )
-                                                    )
-                                                  ]
-                                                }
-                                              }
-                                            ],
-                                            null,
-                                            false,
-                                            499355560
-                                          ),
-                                          model: {
-                                            value: _vm.menuDate,
-                                            callback: function($$v) {
-                                              _vm.menuDate = $$v
-                                            },
-                                            expression: "menuDate"
-                                          }
-                                        },
-                                        [
-                                          _vm._v(" "),
-                                          _c("v-date-picker", {
-                                            on: {
-                                              input: function($event) {
-                                                _vm.menu = false
-                                              }
-                                            },
-                                            model: {
-                                              value: _vm.rowForm.date,
-                                              callback: function($$v) {
-                                                _vm.$set(
-                                                  _vm.rowForm,
-                                                  "date",
-                                                  $$v
-                                                )
-                                              },
-                                              expression: "rowForm.date"
-                                            }
-                                          })
-                                        ],
-                                        1
-                                      )
-                                    ],
-                                    1
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-col",
-                                    {
-                                      staticClass: "py-1",
-                                      attrs: { cols: "12" }
-                                    },
-                                    [
-                                      _c("v-text-field", {
-                                        attrs: {
-                                          rules: _vm.rules.boatName,
-                                          label: "艇名",
-                                          "prepend-icon": "mdi-sail-boat",
-                                          required: ""
-                                        },
-                                        model: {
-                                          value: _vm.rowForm.boatName,
-                                          callback: function($$v) {
-                                            _vm.$set(
-                                              _vm.rowForm,
-                                              "boatName",
-                                              $$v
-                                            )
-                                          },
-                                          expression: "rowForm.boatName"
-                                        }
-                                      })
-                                    ],
-                                    1
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-col",
-                                    {
-                                      staticClass: "py-1",
-                                      attrs: { cols: "6" }
-                                    },
-                                    [
-                                      _c(
-                                        "v-menu",
-                                        {
-                                          ref: "menuOn",
-                                          attrs: {
-                                            "close-on-content-click": false,
-                                            "nudge-right": 40,
-                                            "return-value":
-                                              _vm.rowForm.onTheWaterTime,
-                                            transition: "scale-transition",
-                                            "offset-y": "",
-                                            "max-width": "290px",
-                                            "min-width": "290px"
-                                          },
-                                          on: {
-                                            "update:returnValue": function(
-                                              $event
-                                            ) {
-                                              return _vm.$set(
-                                                _vm.rowForm,
-                                                "onTheWaterTime",
-                                                $event
-                                              )
-                                            },
-                                            "update:return-value": function(
-                                              $event
-                                            ) {
-                                              return _vm.$set(
-                                                _vm.rowForm,
-                                                "onTheWaterTime",
-                                                $event
-                                              )
-                                            }
-                                          },
-                                          scopedSlots: _vm._u(
-                                            [
-                                              {
-                                                key: "activator",
-                                                fn: function(ref) {
-                                                  var on = ref.on
-                                                  var attrs = ref.attrs
-                                                  return [
-                                                    _c(
-                                                      "v-text-field",
-                                                      _vm._g(
-                                                        _vm._b(
-                                                          {
-                                                            attrs: {
-                                                              label: "艇庫発",
-                                                              "prepend-icon":
-                                                                "mdi-clock-time-four-outline",
-                                                              readonly: "",
-                                                              required: "",
-                                                              rules:
-                                                                _vm.rules
-                                                                  .required
-                                                            },
-                                                            model: {
-                                                              value:
-                                                                _vm.rowForm
-                                                                  .onTheWaterTime,
-                                                              callback: function(
-                                                                $$v
-                                                              ) {
-                                                                _vm.$set(
-                                                                  _vm.rowForm,
-                                                                  "onTheWaterTime",
-                                                                  $$v
-                                                                )
-                                                              },
-                                                              expression:
-                                                                "rowForm.onTheWaterTime"
-                                                            }
-                                                          },
-                                                          "v-text-field",
-                                                          attrs,
-                                                          false
-                                                        ),
-                                                        on
-                                                      )
-                                                    )
-                                                  ]
-                                                }
-                                              }
-                                            ],
-                                            null,
-                                            false,
-                                            2259337980
-                                          ),
-                                          model: {
-                                            value: _vm.menuOn,
-                                            callback: function($$v) {
-                                              _vm.menuOn = $$v
-                                            },
-                                            expression: "menuOn"
-                                          }
-                                        },
-                                        [
-                                          _vm._v(" "),
-                                          _vm.menuOn
-                                            ? _c("v-time-picker", {
-                                                attrs: { "full-width": "" },
-                                                on: {
-                                                  "click:minute": function(
-                                                    $event
-                                                  ) {
-                                                    return _vm.$refs.menuOn.save(
-                                                      _vm.rowForm.onTheWaterTime
-                                                    )
-                                                  }
-                                                },
-                                                model: {
-                                                  value:
-                                                    _vm.rowForm.onTheWaterTime,
-                                                  callback: function($$v) {
-                                                    _vm.$set(
-                                                      _vm.rowForm,
-                                                      "onTheWaterTime",
-                                                      $$v
-                                                    )
-                                                  },
-                                                  expression:
-                                                    "rowForm.onTheWaterTime"
-                                                }
-                                              })
-                                            : _vm._e()
-                                        ],
-                                        1
-                                      )
-                                    ],
-                                    1
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-col",
-                                    {
-                                      staticClass: "py-1",
-                                      attrs: { cols: "6" }
-                                    },
-                                    [
-                                      _c(
-                                        "v-menu",
-                                        {
-                                          ref: "menuOff",
-                                          attrs: {
-                                            "close-on-content-click": false,
-                                            "nudge-right": 40,
-                                            "return-value":
-                                              _vm.rowForm.offTheWaterTime,
-                                            transition: "scale-transition",
-                                            "offset-y": "",
-                                            "max-width": "290px",
-                                            "min-width": "290px"
-                                          },
-                                          on: {
-                                            "update:returnValue": function(
-                                              $event
-                                            ) {
-                                              return _vm.$set(
-                                                _vm.rowForm,
-                                                "offTheWaterTime",
-                                                $event
-                                              )
-                                            },
-                                            "update:return-value": function(
-                                              $event
-                                            ) {
-                                              return _vm.$set(
-                                                _vm.rowForm,
-                                                "offTheWaterTime",
-                                                $event
-                                              )
-                                            }
-                                          },
-                                          scopedSlots: _vm._u(
-                                            [
-                                              {
-                                                key: "activator",
-                                                fn: function(ref) {
-                                                  var on = ref.on
-                                                  var attrs = ref.attrs
-                                                  return [
-                                                    _c(
-                                                      "v-text-field",
-                                                      _vm._g(
-                                                        _vm._b(
-                                                          {
-                                                            attrs: {
-                                                              label: "船台着",
-                                                              "prepend-icon":
-                                                                "mdi-clock-time-four-outline",
-                                                              readonly: "",
-                                                              required: "",
-                                                              rules:
-                                                                _vm.rules
-                                                                  .required
-                                                            },
-                                                            model: {
-                                                              value:
-                                                                _vm.rowForm
-                                                                  .offTheWaterTime,
-                                                              callback: function(
-                                                                $$v
-                                                              ) {
-                                                                _vm.$set(
-                                                                  _vm.rowForm,
-                                                                  "offTheWaterTime",
-                                                                  $$v
-                                                                )
-                                                              },
-                                                              expression:
-                                                                "rowForm.offTheWaterTime"
-                                                            }
-                                                          },
-                                                          "v-text-field",
-                                                          attrs,
-                                                          false
-                                                        ),
-                                                        on
-                                                      )
-                                                    )
-                                                  ]
-                                                }
-                                              }
-                                            ],
-                                            null,
-                                            false,
-                                            3677715053
-                                          ),
-                                          model: {
-                                            value: _vm.menuOff,
-                                            callback: function($$v) {
-                                              _vm.menuOff = $$v
-                                            },
-                                            expression: "menuOff"
-                                          }
-                                        },
-                                        [
-                                          _vm._v(" "),
-                                          _vm.menuOff
-                                            ? _c("v-time-picker", {
-                                                attrs: { "full-width": "" },
-                                                on: {
-                                                  "click:minute": function(
-                                                    $event
-                                                  ) {
-                                                    return _vm.$refs.menuOff.save(
-                                                      _vm.rowForm
-                                                        .offTheWaterTime
-                                                    )
-                                                  }
-                                                },
-                                                model: {
-                                                  value:
-                                                    _vm.rowForm.offTheWaterTime,
-                                                  callback: function($$v) {
-                                                    _vm.$set(
-                                                      _vm.rowForm,
-                                                      "offTheWaterTime",
-                                                      $$v
-                                                    )
-                                                  },
-                                                  expression:
-                                                    "rowForm.offTheWaterTime"
-                                                }
-                                              })
-                                            : _vm._e()
-                                        ],
-                                        1
-                                      )
-                                    ],
-                                    1
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-col",
-                                    {
-                                      staticClass: "py-1",
-                                      attrs: { cols: "6" }
-                                    },
-                                    [
-                                      _c("v-select", {
-                                        attrs: {
-                                          items: [
-                                            "1000G",
-                                            "電線",
-                                            "豊里",
-                                            "赤川鉄橋",
-                                            "毛馬"
-                                          ],
-                                          label: "下限水域",
-                                          "prepend-icon":
-                                            "mdi-arrow-collapse-down",
-                                          rules: _vm.rules.required,
-                                          required: ""
-                                        },
-                                        model: {
-                                          value: _vm.rowForm.lowerLimitArea,
-                                          callback: function($$v) {
-                                            _vm.$set(
-                                              _vm.rowForm,
-                                              "lowerLimitArea",
-                                              $$v
-                                            )
-                                          },
-                                          expression: "rowForm.lowerLimitArea"
-                                        }
-                                      })
-                                    ],
-                                    1
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-col",
-                                    {
-                                      staticClass: "py-1",
-                                      attrs: { cols: "6" }
-                                    },
-                                    [
-                                      _c("v-select", {
-                                        attrs: {
-                                          items: [
-                                            "鳥飼",
-                                            "島",
-                                            "仁和寺",
-                                            "新橋"
-                                          ],
-                                          label: "上限水域",
-                                          "prepend-icon":
-                                            "mdi-arrow-collapse-up",
-                                          rules: _vm.rules.required,
-                                          required: ""
-                                        },
-                                        model: {
-                                          value: _vm.rowForm.upperLimitArea,
-                                          callback: function($$v) {
-                                            _vm.$set(
-                                              _vm.rowForm,
-                                              "upperLimitArea",
-                                              $$v
-                                            )
-                                          },
-                                          expression: "rowForm.upperLimitArea"
-                                        }
-                                      })
-                                    ],
-                                    1
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-col",
-                                    {
-                                      staticClass: "py-1",
-                                      attrs: { cols: "12" }
-                                    },
-                                    [
-                                      _c("v-text-field", {
-                                        attrs: {
-                                          label: "その他",
-                                          "prepend-icon":
-                                            "mdi-pencil-plus-outline",
-                                          rules: _vm.rules.others
-                                        },
-                                        model: {
-                                          value: _vm.rowForm.others,
-                                          callback: function($$v) {
-                                            _vm.$set(_vm.rowForm, "others", $$v)
-                                          },
-                                          expression: "rowForm.others"
-                                        }
-                                      })
-                                    ],
-                                    1
-                                  )
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-card-actions",
-                        [
-                          _c("v-spacer"),
-                          _vm._v(" "),
-                          _c(
-                            "v-btn",
-                            {
-                              attrs: { color: "grey darken-1", text: "" },
-                              on: {
-                                click: function($event) {
-                                  _vm.dialog = false
-                                }
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n                        Close\n                    "
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-btn",
-                            {
-                              attrs: { color: "blue", text: "" },
-                              on: { click: _vm.addRow }
-                            },
-                            [
-                              _vm._v(
-                                "\n                        Submit\n                    "
-                              )
-                            ]
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          )
-        : _vm._e()
     ],
     1
   )
@@ -6430,8 +5619,10 @@ var render = function() {
     staticClass: "elevation-1",
     attrs: {
       headers: _vm.headers,
-      items: _vm.desserts,
-      "sort-by": "calories",
+      items: _vm.rows,
+      dense: "",
+      "disable-pagination": "",
+      "hide-default-footer": "",
       "mobile-breakpoint": "10"
     },
     scopedSlots: _vm._u([
@@ -6443,7 +5634,7 @@ var render = function() {
               "v-toolbar",
               { attrs: { flat: "" } },
               [
-                _c("v-toolbar-title", [_vm._v("My CRUD")]),
+                _c("v-toolbar-title", [_vm._v("日付")]),
                 _vm._v(" "),
                 _c("v-divider", {
                   staticClass: "mx-4",
@@ -6452,220 +5643,726 @@ var render = function() {
                 _vm._v(" "),
                 _c("v-spacer"),
                 _vm._v(" "),
-                _c(
-                  "v-dialog",
-                  {
-                    attrs: { "max-width": "500px" },
-                    scopedSlots: _vm._u([
+                _vm.isLogin
+                  ? _c(
+                      "v-dialog",
                       {
-                        key: "activator",
-                        fn: function(ref) {
-                          var on = ref.on
-                          var attrs = ref.attrs
-                          return [
-                            _c(
-                              "v-btn",
-                              _vm._g(
-                                _vm._b(
-                                  {
-                                    staticClass: "mb-2",
-                                    attrs: { color: "primary", dark: "" }
-                                  },
-                                  "v-btn",
-                                  attrs,
-                                  false
-                                ),
-                                on
-                              ),
-                              [
-                                _vm._v(
-                                  "\n                        New Item\n                    "
-                                )
-                              ]
-                            )
-                          ]
+                        attrs: { "max-width": "640px", form: "" },
+                        scopedSlots: _vm._u(
+                          [
+                            {
+                              key: "activator",
+                              fn: function(ref) {
+                                var on = ref.on
+                                var attrs = ref.attrs
+                                return [
+                                  _c(
+                                    "v-btn",
+                                    _vm._g(
+                                      _vm._b(
+                                        {
+                                          staticClass: "mb-2",
+                                          attrs: { color: "primary", dark: "" }
+                                        },
+                                        "v-btn",
+                                        attrs,
+                                        false
+                                      ),
+                                      on
+                                    ),
+                                    [
+                                      _vm._v(
+                                        "\n                                New Item\n                            "
+                                      )
+                                    ]
+                                  )
+                                ]
+                              }
+                            }
+                          ],
+                          null,
+                          false,
+                          2461652123
+                        ),
+                        model: {
+                          value: _vm.dialog,
+                          callback: function($$v) {
+                            _vm.dialog = $$v
+                          },
+                          expression: "dialog"
                         }
-                      }
-                    ]),
-                    model: {
-                      value: _vm.dialog,
-                      callback: function($$v) {
-                        _vm.dialog = $$v
                       },
-                      expression: "dialog"
-                    }
-                  },
-                  [
-                    _vm._v(" "),
-                    _c(
-                      "v-card",
                       [
-                        _c("v-card-title", [
-                          _c("span", { staticClass: "headline" }, [
-                            _vm._v(_vm._s(_vm.formTitle))
-                          ])
-                        ]),
                         _vm._v(" "),
                         _c(
-                          "v-card-text",
+                          "v-card",
                           [
                             _c(
-                              "v-container",
+                              "v-form",
+                              {
+                                ref: "form",
+                                attrs: { "lazy-validation": "" },
+                                on: {
+                                  submit: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.submit($event)
+                                  }
+                                },
+                                model: {
+                                  value: _vm.valid,
+                                  callback: function($$v) {
+                                    _vm.valid = $$v
+                                  },
+                                  expression: "valid"
+                                }
+                              },
                               [
-                                _c("v-text-field", {
-                                  attrs: { label: "Dessert name" },
-                                  model: {
-                                    value: _vm.editedItem.name,
-                                    callback: function($$v) {
-                                      _vm.$set(_vm.editedItem, "name", $$v)
-                                    },
-                                    expression: "editedItem.name"
-                                  }
-                                }),
+                                _c(
+                                  "v-card-title",
+                                  { staticClass: "headline" },
+                                  [
+                                    _vm._v(
+                                      "\n                                    出艇表\n                                "
+                                    )
+                                  ]
+                                ),
                                 _vm._v(" "),
-                                _c("v-text-field", {
-                                  attrs: { label: "Calories" },
-                                  model: {
-                                    value: _vm.editedItem.calories,
-                                    callback: function($$v) {
-                                      _vm.$set(_vm.editedItem, "calories", $$v)
-                                    },
-                                    expression: "editedItem.calories"
-                                  }
-                                }),
+                                _c(
+                                  "v-card-text",
+                                  [
+                                    _c(
+                                      "v-container",
+                                      [
+                                        _c(
+                                          "v-row",
+                                          [
+                                            _c(
+                                              "v-col",
+                                              {
+                                                staticClass: "py-1",
+                                                attrs: { cols: "12" }
+                                              },
+                                              [
+                                                _c(
+                                                  "v-menu",
+                                                  {
+                                                    attrs: {
+                                                      "close-on-content-click": false,
+                                                      "nudge-right": 40,
+                                                      transition:
+                                                        "scale-transition",
+                                                      "offset-y": "",
+                                                      "min-width": "290px"
+                                                    },
+                                                    scopedSlots: _vm._u(
+                                                      [
+                                                        {
+                                                          key: "activator",
+                                                          fn: function(ref) {
+                                                            var on = ref.on
+                                                            var attrs =
+                                                              ref.attrs
+                                                            return [
+                                                              _c(
+                                                                "v-text-field",
+                                                                _vm._g(
+                                                                  _vm._b(
+                                                                    {
+                                                                      attrs: {
+                                                                        label:
+                                                                          "日付",
+                                                                        "prepend-icon":
+                                                                          "mdi-calendar",
+                                                                        readonly:
+                                                                          "",
+                                                                        rules:
+                                                                          _vm
+                                                                            .rules
+                                                                            .required
+                                                                      },
+                                                                      model: {
+                                                                        value:
+                                                                          _vm
+                                                                            .rowForm
+                                                                            .date,
+                                                                        callback: function(
+                                                                          $$v
+                                                                        ) {
+                                                                          _vm.$set(
+                                                                            _vm.rowForm,
+                                                                            "date",
+                                                                            $$v
+                                                                          )
+                                                                        },
+                                                                        expression:
+                                                                          "rowForm.date"
+                                                                      }
+                                                                    },
+                                                                    "v-text-field",
+                                                                    attrs,
+                                                                    false
+                                                                  ),
+                                                                  on
+                                                                )
+                                                              )
+                                                            ]
+                                                          }
+                                                        }
+                                                      ],
+                                                      null,
+                                                      false,
+                                                      499355560
+                                                    ),
+                                                    model: {
+                                                      value: _vm.menuDate,
+                                                      callback: function($$v) {
+                                                        _vm.menuDate = $$v
+                                                      },
+                                                      expression: "menuDate"
+                                                    }
+                                                  },
+                                                  [
+                                                    _vm._v(" "),
+                                                    _c("v-date-picker", {
+                                                      on: {
+                                                        input: function(
+                                                          $event
+                                                        ) {
+                                                          _vm.menu = false
+                                                        }
+                                                      },
+                                                      model: {
+                                                        value: _vm.rowForm.date,
+                                                        callback: function(
+                                                          $$v
+                                                        ) {
+                                                          _vm.$set(
+                                                            _vm.rowForm,
+                                                            "date",
+                                                            $$v
+                                                          )
+                                                        },
+                                                        expression:
+                                                          "rowForm.date"
+                                                      }
+                                                    })
+                                                  ],
+                                                  1
+                                                )
+                                              ],
+                                              1
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "v-col",
+                                              {
+                                                staticClass: "py-1",
+                                                attrs: { cols: "12" }
+                                              },
+                                              [
+                                                _c("v-text-field", {
+                                                  attrs: {
+                                                    rules: _vm.rules.boatName,
+                                                    label: "艇名",
+                                                    "prepend-icon":
+                                                      "mdi-sail-boat",
+                                                    required: ""
+                                                  },
+                                                  model: {
+                                                    value: _vm.rowForm.boatName,
+                                                    callback: function($$v) {
+                                                      _vm.$set(
+                                                        _vm.rowForm,
+                                                        "boatName",
+                                                        $$v
+                                                      )
+                                                    },
+                                                    expression:
+                                                      "rowForm.boatName"
+                                                  }
+                                                })
+                                              ],
+                                              1
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "v-col",
+                                              {
+                                                staticClass: "py-1",
+                                                attrs: { cols: "6" }
+                                              },
+                                              [
+                                                _c(
+                                                  "v-menu",
+                                                  {
+                                                    ref: "menuOn",
+                                                    attrs: {
+                                                      "close-on-content-click": false,
+                                                      "nudge-right": 40,
+                                                      "return-value":
+                                                        _vm.rowForm
+                                                          .onTheWaterTime,
+                                                      transition:
+                                                        "scale-transition",
+                                                      "offset-y": "",
+                                                      "max-width": "290px",
+                                                      "min-width": "290px"
+                                                    },
+                                                    on: {
+                                                      "update:returnValue": function(
+                                                        $event
+                                                      ) {
+                                                        return _vm.$set(
+                                                          _vm.rowForm,
+                                                          "onTheWaterTime",
+                                                          $event
+                                                        )
+                                                      },
+                                                      "update:return-value": function(
+                                                        $event
+                                                      ) {
+                                                        return _vm.$set(
+                                                          _vm.rowForm,
+                                                          "onTheWaterTime",
+                                                          $event
+                                                        )
+                                                      }
+                                                    },
+                                                    scopedSlots: _vm._u(
+                                                      [
+                                                        {
+                                                          key: "activator",
+                                                          fn: function(ref) {
+                                                            var on = ref.on
+                                                            var attrs =
+                                                              ref.attrs
+                                                            return [
+                                                              _c(
+                                                                "v-text-field",
+                                                                _vm._g(
+                                                                  _vm._b(
+                                                                    {
+                                                                      attrs: {
+                                                                        label:
+                                                                          "艇庫発",
+                                                                        "prepend-icon":
+                                                                          "mdi-clock-time-four-outline",
+                                                                        readonly:
+                                                                          "",
+                                                                        required:
+                                                                          "",
+                                                                        rules:
+                                                                          _vm
+                                                                            .rules
+                                                                            .required
+                                                                      },
+                                                                      model: {
+                                                                        value:
+                                                                          _vm
+                                                                            .rowForm
+                                                                            .onTheWaterTime,
+                                                                        callback: function(
+                                                                          $$v
+                                                                        ) {
+                                                                          _vm.$set(
+                                                                            _vm.rowForm,
+                                                                            "onTheWaterTime",
+                                                                            $$v
+                                                                          )
+                                                                        },
+                                                                        expression:
+                                                                          "rowForm.onTheWaterTime"
+                                                                      }
+                                                                    },
+                                                                    "v-text-field",
+                                                                    attrs,
+                                                                    false
+                                                                  ),
+                                                                  on
+                                                                )
+                                                              )
+                                                            ]
+                                                          }
+                                                        }
+                                                      ],
+                                                      null,
+                                                      false,
+                                                      2259337980
+                                                    ),
+                                                    model: {
+                                                      value: _vm.menuOn,
+                                                      callback: function($$v) {
+                                                        _vm.menuOn = $$v
+                                                      },
+                                                      expression: "menuOn"
+                                                    }
+                                                  },
+                                                  [
+                                                    _vm._v(" "),
+                                                    _vm.menuOn
+                                                      ? _c("v-time-picker", {
+                                                          attrs: {
+                                                            "full-width": ""
+                                                          },
+                                                          on: {
+                                                            "click:minute": function(
+                                                              $event
+                                                            ) {
+                                                              return _vm.$refs.menuOn.save(
+                                                                _vm.rowForm
+                                                                  .onTheWaterTime
+                                                              )
+                                                            }
+                                                          },
+                                                          model: {
+                                                            value:
+                                                              _vm.rowForm
+                                                                .onTheWaterTime,
+                                                            callback: function(
+                                                              $$v
+                                                            ) {
+                                                              _vm.$set(
+                                                                _vm.rowForm,
+                                                                "onTheWaterTime",
+                                                                $$v
+                                                              )
+                                                            },
+                                                            expression:
+                                                              "rowForm.onTheWaterTime"
+                                                          }
+                                                        })
+                                                      : _vm._e()
+                                                  ],
+                                                  1
+                                                )
+                                              ],
+                                              1
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "v-col",
+                                              {
+                                                staticClass: "py-1",
+                                                attrs: { cols: "6" }
+                                              },
+                                              [
+                                                _c(
+                                                  "v-menu",
+                                                  {
+                                                    ref: "menuOff",
+                                                    attrs: {
+                                                      "close-on-content-click": false,
+                                                      "nudge-right": 40,
+                                                      "return-value":
+                                                        _vm.rowForm
+                                                          .offTheWaterTime,
+                                                      transition:
+                                                        "scale-transition",
+                                                      "offset-y": "",
+                                                      "max-width": "290px",
+                                                      "min-width": "290px"
+                                                    },
+                                                    on: {
+                                                      "update:returnValue": function(
+                                                        $event
+                                                      ) {
+                                                        return _vm.$set(
+                                                          _vm.rowForm,
+                                                          "offTheWaterTime",
+                                                          $event
+                                                        )
+                                                      },
+                                                      "update:return-value": function(
+                                                        $event
+                                                      ) {
+                                                        return _vm.$set(
+                                                          _vm.rowForm,
+                                                          "offTheWaterTime",
+                                                          $event
+                                                        )
+                                                      }
+                                                    },
+                                                    scopedSlots: _vm._u(
+                                                      [
+                                                        {
+                                                          key: "activator",
+                                                          fn: function(ref) {
+                                                            var on = ref.on
+                                                            var attrs =
+                                                              ref.attrs
+                                                            return [
+                                                              _c(
+                                                                "v-text-field",
+                                                                _vm._g(
+                                                                  _vm._b(
+                                                                    {
+                                                                      attrs: {
+                                                                        label:
+                                                                          "船台着",
+                                                                        "prepend-icon":
+                                                                          "mdi-clock-time-four-outline",
+                                                                        readonly:
+                                                                          "",
+                                                                        required:
+                                                                          "",
+                                                                        rules:
+                                                                          _vm
+                                                                            .rules
+                                                                            .required
+                                                                      },
+                                                                      model: {
+                                                                        value:
+                                                                          _vm
+                                                                            .rowForm
+                                                                            .offTheWaterTime,
+                                                                        callback: function(
+                                                                          $$v
+                                                                        ) {
+                                                                          _vm.$set(
+                                                                            _vm.rowForm,
+                                                                            "offTheWaterTime",
+                                                                            $$v
+                                                                          )
+                                                                        },
+                                                                        expression:
+                                                                          "rowForm.offTheWaterTime"
+                                                                      }
+                                                                    },
+                                                                    "v-text-field",
+                                                                    attrs,
+                                                                    false
+                                                                  ),
+                                                                  on
+                                                                )
+                                                              )
+                                                            ]
+                                                          }
+                                                        }
+                                                      ],
+                                                      null,
+                                                      false,
+                                                      3677715053
+                                                    ),
+                                                    model: {
+                                                      value: _vm.menuOff,
+                                                      callback: function($$v) {
+                                                        _vm.menuOff = $$v
+                                                      },
+                                                      expression: "menuOff"
+                                                    }
+                                                  },
+                                                  [
+                                                    _vm._v(" "),
+                                                    _vm.menuOff
+                                                      ? _c("v-time-picker", {
+                                                          attrs: {
+                                                            "full-width": ""
+                                                          },
+                                                          on: {
+                                                            "click:minute": function(
+                                                              $event
+                                                            ) {
+                                                              return _vm.$refs.menuOff.save(
+                                                                _vm.rowForm
+                                                                  .offTheWaterTime
+                                                              )
+                                                            }
+                                                          },
+                                                          model: {
+                                                            value:
+                                                              _vm.rowForm
+                                                                .offTheWaterTime,
+                                                            callback: function(
+                                                              $$v
+                                                            ) {
+                                                              _vm.$set(
+                                                                _vm.rowForm,
+                                                                "offTheWaterTime",
+                                                                $$v
+                                                              )
+                                                            },
+                                                            expression:
+                                                              "rowForm.offTheWaterTime"
+                                                          }
+                                                        })
+                                                      : _vm._e()
+                                                  ],
+                                                  1
+                                                )
+                                              ],
+                                              1
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "v-col",
+                                              {
+                                                staticClass: "py-1",
+                                                attrs: { cols: "6" }
+                                              },
+                                              [
+                                                _c("v-select", {
+                                                  attrs: {
+                                                    items: [
+                                                      "1000G",
+                                                      "電線",
+                                                      "豊里",
+                                                      "赤川鉄橋",
+                                                      "毛馬"
+                                                    ],
+                                                    label: "下限水域",
+                                                    "prepend-icon":
+                                                      "mdi-arrow-collapse-down",
+                                                    rules: _vm.rules.required,
+                                                    required: ""
+                                                  },
+                                                  model: {
+                                                    value:
+                                                      _vm.rowForm
+                                                        .lowerLimitArea,
+                                                    callback: function($$v) {
+                                                      _vm.$set(
+                                                        _vm.rowForm,
+                                                        "lowerLimitArea",
+                                                        $$v
+                                                      )
+                                                    },
+                                                    expression:
+                                                      "rowForm.lowerLimitArea"
+                                                  }
+                                                })
+                                              ],
+                                              1
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "v-col",
+                                              {
+                                                staticClass: "py-1",
+                                                attrs: { cols: "6" }
+                                              },
+                                              [
+                                                _c("v-select", {
+                                                  attrs: {
+                                                    items: [
+                                                      "鳥飼",
+                                                      "島",
+                                                      "仁和寺",
+                                                      "新橋"
+                                                    ],
+                                                    label: "上限水域",
+                                                    "prepend-icon":
+                                                      "mdi-arrow-collapse-up",
+                                                    rules: _vm.rules.required,
+                                                    required: ""
+                                                  },
+                                                  model: {
+                                                    value:
+                                                      _vm.rowForm
+                                                        .upperLimitArea,
+                                                    callback: function($$v) {
+                                                      _vm.$set(
+                                                        _vm.rowForm,
+                                                        "upperLimitArea",
+                                                        $$v
+                                                      )
+                                                    },
+                                                    expression:
+                                                      "rowForm.upperLimitArea"
+                                                  }
+                                                })
+                                              ],
+                                              1
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "v-col",
+                                              {
+                                                staticClass: "py-1",
+                                                attrs: { cols: "12" }
+                                              },
+                                              [
+                                                _c("v-text-field", {
+                                                  attrs: {
+                                                    label: "その他",
+                                                    "prepend-icon":
+                                                      "mdi-pencil-plus-outline",
+                                                    rules: _vm.rules.others
+                                                  },
+                                                  model: {
+                                                    value: _vm.rowForm.others,
+                                                    callback: function($$v) {
+                                                      _vm.$set(
+                                                        _vm.rowForm,
+                                                        "others",
+                                                        $$v
+                                                      )
+                                                    },
+                                                    expression: "rowForm.others"
+                                                  }
+                                                })
+                                              ],
+                                              1
+                                            )
+                                          ],
+                                          1
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                ),
                                 _vm._v(" "),
-                                _c("v-text-field", {
-                                  attrs: { label: "Fat (g)" },
-                                  model: {
-                                    value: _vm.editedItem.fat,
-                                    callback: function($$v) {
-                                      _vm.$set(_vm.editedItem, "fat", $$v)
-                                    },
-                                    expression: "editedItem.fat"
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("v-text-field", {
-                                  attrs: { label: "Carbs (g)" },
-                                  model: {
-                                    value: _vm.editedItem.carbs,
-                                    callback: function($$v) {
-                                      _vm.$set(_vm.editedItem, "carbs", $$v)
-                                    },
-                                    expression: "editedItem.carbs"
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("v-text-field", {
-                                  attrs: { label: "Protein (g)" },
-                                  model: {
-                                    value: _vm.editedItem.protein,
-                                    callback: function($$v) {
-                                      _vm.$set(_vm.editedItem, "protein", $$v)
-                                    },
-                                    expression: "editedItem.protein"
-                                  }
-                                })
+                                _c(
+                                  "v-card-actions",
+                                  [
+                                    _c("v-spacer"),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-btn",
+                                      {
+                                        attrs: {
+                                          color: "grey darken-1",
+                                          text: ""
+                                        },
+                                        on: {
+                                          click: function($event) {
+                                            _vm.dialog = false
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                        Close\n                                    "
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-btn",
+                                      {
+                                        attrs: { color: "blue", text: "" },
+                                        on: { click: _vm.addRow }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                        Submit\n                                    "
+                                        )
+                                      ]
+                                    )
+                                  ],
+                                  1
+                                )
                               ],
                               1
                             )
                           ],
                           1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "v-card-actions",
-                          [
-                            _c("v-spacer"),
-                            _vm._v(" "),
-                            _c(
-                              "v-btn",
-                              {
-                                attrs: { color: "blue darken-1", text: "" },
-                                on: { click: _vm.close }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                            Cancel\n                        "
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "v-btn",
-                              {
-                                attrs: { color: "blue darken-1", text: "" },
-                                on: { click: _vm.save }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                            Save\n                        "
-                                )
-                              ]
-                            )
-                          ],
-                          1
                         )
                       ],
                       1
                     )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "v-dialog",
-                  {
-                    attrs: { "max-width": "500px" },
-                    model: {
-                      value: _vm.dialogDelete,
-                      callback: function($$v) {
-                        _vm.dialogDelete = $$v
-                      },
-                      expression: "dialogDelete"
-                    }
-                  },
-                  [
-                    _c(
-                      "v-card",
-                      [
-                        _c("v-card-title", { staticClass: "headline" }, [
-                          _vm._v("Are you sure you want to delete this item?")
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "v-card-actions",
-                          [
-                            _c("v-spacer"),
-                            _vm._v(" "),
-                            _c(
-                              "v-btn",
-                              {
-                                attrs: { color: "blue darken-1", text: "" },
-                                on: { click: _vm.closeDelete }
-                              },
-                              [_vm._v("Cancel")]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "v-btn",
-                              {
-                                attrs: { color: "blue darken-1", text: "" },
-                                on: { click: _vm.deleteItemConfirm }
-                              },
-                              [_vm._v("OK")]
-                            ),
-                            _vm._v(" "),
-                            _c("v-spacer")
-                          ],
-                          1
-                        )
-                      ],
-                      1
-                    )
-                  ],
-                  1
-                )
+                  : _vm._e()
               ],
               1
             )
@@ -6689,7 +6386,7 @@ var render = function() {
                   }
                 }
               },
-              [_vm._v("\n            mdi-pencil\n        ")]
+              [_vm._v("\n                    mdi-pencil\n                ")]
             ),
             _vm._v(" "),
             _c(
@@ -6702,23 +6399,10 @@ var render = function() {
                   }
                 }
               },
-              [_vm._v("\n            mdi-delete\n        ")]
+              [_vm._v("\n                    mdi-delete\n                ")]
             )
           ]
         }
-      },
-      {
-        key: "no-data",
-        fn: function() {
-          return [
-            _c(
-              "v-btn",
-              { attrs: { color: "primary" }, on: { click: _vm.initialize } },
-              [_vm._v("\n            Reset\n        ")]
-            )
-          ]
-        },
-        proxy: true
       }
     ])
   })
@@ -67334,75 +67018,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Navbar_vue_vue_type_template_id_6dde423b_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Navbar_vue_vue_type_template_id_6dde423b_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./resources/js/components/RowForm.vue":
-/*!*********************************************!*\
-  !*** ./resources/js/components/RowForm.vue ***!
-  \*********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _RowForm_vue_vue_type_template_id_1d12d823___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RowForm.vue?vue&type=template&id=1d12d823& */ "./resources/js/components/RowForm.vue?vue&type=template&id=1d12d823&");
-/* harmony import */ var _RowForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RowForm.vue?vue&type=script&lang=js& */ "./resources/js/components/RowForm.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _RowForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _RowForm_vue_vue_type_template_id_1d12d823___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _RowForm_vue_vue_type_template_id_1d12d823___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/RowForm.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/RowForm.vue?vue&type=script&lang=js&":
-/*!**********************************************************************!*\
-  !*** ./resources/js/components/RowForm.vue?vue&type=script&lang=js& ***!
-  \**********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_RowForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./RowForm.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/RowForm.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_RowForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/RowForm.vue?vue&type=template&id=1d12d823&":
-/*!****************************************************************************!*\
-  !*** ./resources/js/components/RowForm.vue?vue&type=template&id=1d12d823& ***!
-  \****************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RowForm_vue_vue_type_template_id_1d12d823___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./RowForm.vue?vue&type=template&id=1d12d823& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/RowForm.vue?vue&type=template&id=1d12d823&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RowForm_vue_vue_type_template_id_1d12d823___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RowForm_vue_vue_type_template_id_1d12d823___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
